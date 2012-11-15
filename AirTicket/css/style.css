@@ -1,22 +1,22 @@
-﻿/* ~~~~ Stylesheet fuer die Webapplikation AirTicket ~~~~
+/* ~~~~ Stylesheet fuer die Webapplikation AirTicket ~~~~
  */
 
 /* Reset all */
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 /* HTML5 HACK */
-header, section, footer, aside, nav, article {  
-	display: block;  
+header,section,footer,aside,nav,article {
+	display: block;
 }
 
 /* Typselektoren */
 body {
-  font-family: sans-serif;
-  min-width: 800px;
-  background-color: #EEEEEE;
+	font-family: sans-serif;
+	min-width: 800px;
+	background-color: #EEEEEE;
 }
 
 #seite {
@@ -26,13 +26,137 @@ body {
 	background-color: #FFFFFF;
 }
 
+h1 {
+	margin: 10px;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	color: black;
+}
+
+/* HEADER */
 header {
+	position: relative;
 	height: 211px;
+	width: auto;
 	background-image: url(img/airplane.png);
 	background-repeat: no-repeat;
+	border: 1px solid red;
+}
+
+header aside {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	border: 1px solid red;
+}
+
+/* CONTENT */
+#progressBar {
+	margin: 15px;
+	height: 40px;
+	border: 1px solid red;
+}
+
+section {
+	position: relative; 
+	min-height : 500px;
+	border: 1px solid red;
+}
+
+article {
+	position: relative;
+	margin: 15px;
+	margin-right: 135px;
+	border: 1px solid blue;
+}
+
+/* FORM */
+article form {
+	display: block;
+	margin: 15px;
+	border: 1px solid green;
+}
+
+article fieldset {
+	display: block;
+	padding: 3px;
+	margin-top: 4px;
+	border: 1px solid grey;
+}
+
+article label ,article input, article select {
+	display: block;
+	float: left;
+	width: 35%;
+	height: 20px;
+	margin: 3px;
+}
+
+.radio {
+	width: 10px;
 }
 
 
+span {
+	display: block;
+	float: left;
+}
+
+
+
+
+
+/* NAVI */
+section aside {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 120px;
+	height: 100%;
+	border: 1px solid red;
+}
+
+section aside li{
+	display: block;
+	
+}
+
+section aside a{
+	display: block;
+	margin: 3px;
+	padding: 5px;
+	text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background-color: grey;
+}
+
+footer a {
+	text-decoration: none;
+	display: block;
+	float: left;
+	padding: 2px;
+	margin-left: 10px;
+	
+}
+
+/* footer { GANZ UNTEN
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	background-color: grey;
+} */
 
 /*
 h1 {
