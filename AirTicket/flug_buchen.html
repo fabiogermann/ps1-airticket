@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="UTF-8" />
+<title>Air Ticket | Flug buchen</title>
+<link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+	<div id="seite">
+
+		<header>
+			<h1>AirTicket</h1>
+			<div id="login">
+				<form action="anmelden.jsp" method="post">
+					<fieldset>
+						<label for="email">E-Mail</label>
+						<input type="email" id="email" name="email" required="required" />
+						<label for="passwort">Passwort</label>
+						<input type="password" id="passwort" name="passwort" required="required" />
+						<input type="submit" id="submit_login" name="login" value="Anmelden" class="button" />
+					</fieldset>
+				</form>
+			</div>
+		</header>
+
+		<section>
+			<div id="progressbar">
+				<ul>
+					<li><p>1. Flug finden</p></li>
+					<li><p>2. Flug auswählen</p></li>
+					<li class="active"><p>3. Flug buchen</p></li>
+					<li><p>4. Flugbestätigung</p></li>
+				</ul>
+			</div>
+
+			<article>
+				<h1>Ihre Flugauswahl | Detailinformationen</h1>
+
+				<div id="flugdetails">
+					<h2>Ihr Hinflug</h2>
+					<table border="1">
+						<tr>
+							<th>Flugnummer</th>
+							<th>Abflugdatum | Zeit</th>
+							<th>Ankunftsdatum | Zeit</th>
+							<th>Dauer</th>
+							<th>Startflughafen</th>
+							<th>Zielflughafen</th>
+							<th>Klasse</th>
+							<th>Ticketpreis</th>
+						</tr>
+						<tr>
+							<td>K2 482</td>
+							<td>27.11.12 | 09:20</td>
+							<td>27.11.12 | 10:35</td>
+							<td>1:15h</td>
+							<td>Zürich</td>
+							<td>London</td>
+							<td>Economy</td>
+							<td>250 CHF</td>
+						</tr>
+					</table>
+					<h2>Ihr Rückflug</h2>
+					<table border="1">
+						<tr>
+							<th>Flugnummer</th>
+							<th>Abflugdatum | Zeit</th>
+							<th>Ankunftsdatum | Zeit</th>
+							<th>Dauer</th>
+							<th>Startflughafen</th>
+							<th>Zielflughafen</th>
+							<th>Klasse</th>
+							<th>Ticketpreis</th>
+						</tr>
+						<tr>
+							<td>AB 41258</td>
+							<td>30.11.12 | 11:35</td>
+							<td>30.11.12 | 12:53</td>
+							<td>1:18h</td>
+							<td>London</td>
+							<td>Zürich</td>
+							<td>Business</td>
+							<td>375 CHF</td>
+						</tr>
+					</table>
+					<h2>Total</h2>
+					<div class="total"><strong>Zürich - London - Zürich<span class="total_value">625 CHF</span></strong></div>
+					<input type="button" id="zuruek" name="submit_auswahl" value="Zurück" class="button back" onclick="history.go(-1)" />
+					<form action="flug_bestaetigung.html" method="post">
+						<input type="submit" id="submit_buchen" name="submit_buchen" value="Flug buchen" class="button next" />
+					</form>
+				</div>
+			</article>
+
+			<nav>
+				<ul>
+					<li><a href="index.html">Flug finden</a></li>
+					<!-- IF !Angemeldet -->
+					<li><a href="benutzer_anmelden.html">Anmelden</a></li>
+					<li><a href="benutzer_registrieren.html">Registrieren</a></li>
+					<!-- IF !Else -->
+					<li><a href="benutzer_konto.html">Mein Konto</a></li>
+				</ul>
+			</nav>
+
+		</section>
+
+		<footer>
+			<ul>
+				<li><a href="kontakt.html">Kontakt&nbsp;|&nbsp;</a></li>
+				<li><a href="sitemap.html">Sitemap&nbsp;|&nbsp;</a></li>
+				<li><a href="impressum.html">Impressum</a></li>
+			</ul>
+		</footer>
+
+	</div>
+</body>
+</html>

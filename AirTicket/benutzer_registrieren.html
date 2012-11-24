@@ -1,0 +1,93 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="UTF-8" />
+<title>Air Ticket | Registrieren</title>
+<link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+	<div id="seite">
+
+		<header>
+			<h1>AirTicket</h1>
+			<div id="login">
+				<form action="anmelden.jsp" method="post">
+					<fieldset>
+						<label for="email1">E-Mail</label>
+						<input type="email" id="email1" name="email" required="required" />
+						<label for="passwort1">Passwort</label>
+						<input type="password" id="passwort1" name="passwort" required="required" />
+						<input type="submit" id="submit_login" name="login" value="Anmelden" class="button" />
+					</fieldset>
+				</form>
+			</div>
+		</header>
+
+		<section>
+			<article>
+				<h1>Registrieren</h1>
+				<form action="benutzer_registriert.html" method="post">
+					<fieldset>
+						<legend>Benutzerkonto</legend>
+						<label for="email">E-Mail</label>
+						<input type="email" id="email" name="email" required="required" />
+
+						<label for="passwort">Passwort</label>
+						<input type="password" id="passwort" name="passwort" required="required" />
+					</fieldset>
+
+					<fieldset>
+						<legend>Personalien</legend>
+						<label for="vorname">Vorname</label>
+						<input type="text" id="vorname" name="vorname" required="required" />
+
+						<label for="name">Name</label>
+						<input type="text" id="name" name="name" required="required" />
+
+						<label for="strasse">Strasse</label>
+						<input type="text" id="strasse" name="strasse" required="required" />
+
+						<label for="ort">Ort</label>
+						<input type="text" id="ort" name="ort" required="required" />
+
+						<label for="postleitzahl">Postleitzahl</label>
+						<input type="number" id="postleitzahl" name="postleitzahl" required="required" />
+
+						<label for="telefonnummer">Telefonnummer</label>
+						<input type="number" id="telefonnummer" name="telefonnummer" required="required" />
+
+						<label for="land">Land</label>
+						<input type="text" id="land" name="land" required="required" />
+					</fieldset>
+					<input type="submit" id="submit_register" name="submit_register" value="Registrieren" class="button" />
+				</form>
+
+			</article>
+
+			<nav>
+				<ul>
+					<li><a href="index.html">Flug finden</a></li>
+					<!-- IF !Angemeldet -->
+					<li><a href="benutzer_anmelden.html">Anmelden</a></li>
+					<li><a href="benutzer_registrieren.html">Registrieren</a></li>
+					<!-- IF !Else -->
+					<li><a href="benutzer_konto.html">Mein Konto</a></li>
+				</ul>
+			</nav>
+
+		</section>
+
+		<footer>
+			<ul>
+				<li><a href="kontakt.html">Kontakt&nbsp;|&nbsp;</a></li>
+				<li><a href="sitemap.html">Sitemap&nbsp;|&nbsp;</a></li>
+				<li><a href="impressum.html">Impressum</a></li>
+			</ul>
+		</footer>
+
+	</div>
+</body>
+</html>
