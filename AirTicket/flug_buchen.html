@@ -87,10 +87,16 @@
 					</table>
 					<h2>Total</h2>
 					<div class="total"><strong>Zürich - London - Zürich<span class="total_value">625 CHF</span></strong></div>
-					<input type="button" id="zuruek" name="submit_auswahl" value="Zurück" class="button back" onclick="history.go(-1)" />
+					
 					<form action="flug_bestaetigung.html" method="post">
 						<input type="submit" id="submit_buchen" name="submit_buchen" value="Flug buchen" class="button next" />
 					</form>
+					
+					<!-- <input type="button" id="zuruek" name="zuruek" value="Zurück" class="button back" onclick="history.back()" /> -->
+					<form action="flug_auswaehlen.html" method="post">
+						<input type="submit" id="zuruek" name="zuruek" value="Zurück" class="button back" />
+					</form>
+					
 				</div>
 			</article>
 

@@ -87,12 +87,16 @@
 					</div>
 
 					<form action="#">
-						<input type="button" id="zuruek" name="submit_auswahl" value="Zurück" class="button back" onclick="history.go(-1)" />
 						<input type="button" id="einchecken" name="einchecken" value="Einchecken" class="button next" />
 						<!--  
 							<input type="submit" id="aendern" name="aendern" value="Sitz ändern" />
 							<input type="submit" id="stornieren" name="stornieren" value="Stornieren" />
 							-->
+					</form>
+
+					<!-- <input type="button" id="zuruek" name="zuruek" value="Zurück" class="button back" onclick="history.back()" /> -->
+					<form action="benutzer_konto.html" method="post">
+						<input type="submit" id="zuruek" name="zuruek" value="Zurück" class="button back" />
 					</form>
 
 

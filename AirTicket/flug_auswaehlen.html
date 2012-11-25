@@ -182,9 +182,14 @@
 						</table>
 					</div>
 
-					<input type="button" id="zuruek" name="zuruek" value="Zurück" class="button back" onclick="history.go(-1)" />
 					<input type="submit" id="submit_auswahl" name="submit_auswahl" value="Auswählen" class="button next" />
+
 				</form>
+				<!-- <input type="button" id="zuruek" name="zuruek" value="Zurück" class="button back" onclick="history.back()" /> -->
+				<form action="index.html" method="post">
+					<input type="submit" id="zuruek" name="zuruek" value="Zurück" class="button back" />
+				</form>
+
 			</article>
 			<nav>
 				<ul>

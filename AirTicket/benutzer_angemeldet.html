@@ -14,13 +14,12 @@
 		<header>
 			<h1>AirTicket</h1>
 			<div id="login">
-				<form action="anmelden.jsp" method="post">
+				<form action="abmelden.jsp" method="post">
 					<fieldset>
-						<label for="email">E-Mail</label>
-						<input type="email" id="email" name="email" required="required" />
-						<label for="passwort">Passwort</label>
-						<input type="password" id="passwort" name="passwort" required="required" />
-						<input type="submit" id="submit_login" name="login" value="Anmelden" class="button" />
+						<label>
+							<a href="benutzer_konto.html">air.ticket@example.com</a>
+						</label>
+						<input type="submit" id="submit_abmelden" name="login" value="Abmelden" class="button" />
 					</fieldset>
 				</form>
 			</div>
@@ -29,17 +28,15 @@
 		<section>
 			<article>
 				<h1>Anmelden</h1>
-				<form action="benutzer_angemeldet.html" method="post">
-					<fieldset>
-						<legend>Logindaten</legend>
-						<label for="email2">E-Mail</label>
-						<input type="email" id="email2" name="email" required="required" />
-						<label for="passwort2">Passwort</label>
-						<input type="password" id="passwort2" name="passwort" required="required" />
-					</fieldset>
-					<input type="submit" id="submit_login2" name="login" value="Anmelden" class="button" />
-				</form>
-
+				<p>
+					Sie sind nun Angemeldet.
+					<br />
+					<br />
+					<a href="benutzer_konto.html">zu meinem Konto</a>
+					<br />
+					<br />
+					<a href="index.html">einen Flug finden</a>
+				<p>
 			</article>
 
 			<nav>
