@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta charset="UTF-8" />
-<title>Air Ticket | Benutzerkonto</title>
-<link rel="stylesheet" href="./css/style.css" />
+	<meta charset="UTF-8" />
+	<title>Air Ticket | Benutzerkonto</title>
+	<link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -13,13 +13,12 @@
 		<header>
 			<h1>AirTicket</h1>
 			<div id="login">
-				<form action="anmelden.jsp" method="post">
+				<form action="abmelden.jsp" method="post">
 					<fieldset>
-						<label for="email">E-Mail</label>
-						<input type="email" id="email" name="email" required="required" />
-						<label for="passwort">Passwort</label>
-						<input type="password" id="passwort" name="passwort" required="required" />
-						<input type="submit" id="submit_login" name="login" value="Anmelden" class="button" />
+						<label>
+							<a href="benutzer_konto.html" alt="Mein Konto">air.ticket@example.com</a>
+						</label>
+						<input type="submit" id="submit_logout" name="logout" value="Abmelden" class="button" />
 					</fieldset>
 				</form>
 			</div>
@@ -30,7 +29,7 @@
 				<h1>Benutzerkonto</h1>
 				<h2>Ihre Tickets</h2>
 				<form action="sitz_einchecken.html" method="post">
-					<table border="1">
+					<table>
 						<tr>
 							<th>Flugnummer</th>
 							<th>Abflugdatum | Zeit</th>
@@ -43,7 +42,7 @@
 							<th></th>
 						</tr>
 						<tr>
-							<td>K2 482</td>
+							<td>LH 747</td>
 							<td>27.11.12 09:20</td>
 							<td>27.11.12 10:35</td>
 							<td>Zürich</td>
@@ -88,16 +87,16 @@
 						</tr>
 					</table>
 				</form>
-
 			</article>
+			
 			<nav>
 				<ul>
-					<li><a href="index.html">Flug finden</a></li>
+					<li><a href="index.html" alt="Flug finden">Flug finden</a></li>
 					<!-- IF !Angemeldet -->
-					<li><a href="benutzer_anmelden.html">Anmelden</a></li>
-					<li><a href="benutzer_registrieren.html">Registrieren</a></li>
+					<li><a href="benutzer_anmelden.html" alt="Anmelden">Anmelden</a></li>
+					<li><a href="benutzer_registrieren.html" alt="Registrieren">Registrieren</a></li>
 					<!-- IF !Else -->
-					<li><a href="benutzer_konto.html">Mein Konto</a></li>
+					<li><a href="benutzer_konto.html" alt="Mein Konto">Mein Konto</a></li>
 				</ul>
 			</nav>
 
@@ -105,11 +104,12 @@
 
 		<footer>
 			<ul>
-				<li><a href="kontakt.html">Kontakt&nbsp;|&nbsp;</a></li>
-				<li><a href="sitemap.html">Sitemap&nbsp;|&nbsp;</a></li>
-				<li><a href="impressum.html">Impressum</a></li>
+				<li><a href="kontakt.html" alt="Kontakt">Kontakt</a>&nbsp;|&nbsp;</li>
+				<li><a href="sitemap.html" alt="Sitemap">Sitemap</a>&nbsp;|&nbsp;</li>
+				<li><a href="impressum.html" alt="Impressum">Impressum</a></li>
 			</ul>
 		</footer>
+		
 	</div>
 </body>
 </html>

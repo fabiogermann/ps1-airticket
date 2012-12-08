@@ -1,5 +1,7 @@
-/* ~~~~ Stylesheet für die Webapplikation AirTicket ~~~~
- */
+/* ~~~~ Stylesheet für die Webapplikation AirTicket ~~~~ */
+/*           v1.0, letzte Änderung: 07.12.2012           */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+ 
 
 /* Reset all */
 * {
@@ -7,18 +9,20 @@
 	padding: 0;
 }
 
-/* HTML5 HACK */
-header,section,footer,aside,nav,article {
+
+/* HTML5 Hack */
+header, section, footer, aside, nav, article {
 	display: block;
 }
 
+
 /* Allgemeine Definitionen */
 body {
-	font-family: sans-serif;
-	font-size: 12px;
 	background-color: #FFFFFF;
 	background-image: url(img/stripe.png);
 	background-repeat: repeat;
+	font-family: sans-serif;
+	font-size: 12px;
 }
 
 ul {
@@ -39,6 +43,7 @@ h1 {
 	font-size: 1.8em;
 }
 
+
 /* Hauptblöcke */
 #seite {
 	width: 900px;
@@ -49,7 +54,7 @@ header {
 	position: relative;
 	height: 195px;
 	margin-bottom: 8px;
-	background-image: url(img/airplane_2.png);
+	background-image: url(img/airplane.png);
 	background-repeat: no-repeat;
 	background-color: #FBFBFB;
 	border: 1px solid #333333;
@@ -64,22 +69,13 @@ header {
 	right: 5px;
 }
 
-nav {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 141px;
-	height: 100%;
-	border-left: 1px solid #333333;
-	background-color: #FFFFFF;
-}
-
 section {
 	position: relative;
 	min-height: 500px;
 	padding: 5px 0 5px 5px;
 	background-image: url(img/background.png);
 	background-repeat: repeat-x;
+	background-color: #E4E4E4;
 	border: 1px solid #333333;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -91,6 +87,15 @@ article {
 	width: 736px;
 	float: left;
 	padding: 5px;
+}
+
+nav {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 141px;
+	height: 100%;
+	border-left: 1px solid #333333;
 }
 
 footer {
@@ -105,6 +110,7 @@ footer {
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 }
+
 
 /* header */
 header h1 {
@@ -136,6 +142,7 @@ header input {
 	margin-right: 5px;
 }
 
+
 /* navigation */
 nav ul li a {
 	display: block;
@@ -158,15 +165,14 @@ nav ul li a:hover {
 	color: #4682B4;
 }
 
-/* progressbar */
+
+/* Progressbar */
 #progressbar {
 	position: relative;
-	width: 736px;
-	float: left;
+	width: 735px;
 	height: 30px;
-	margin-top: 3px;
-	margin-left: 5px;
-	margin-bottom: 5px;
+	float: left;
+	margin: 3px 0 5px 5px; 
 	background-image: url(img/progressbar.png);
 	background-repeat: repeat-x;
 	border: 1px solid #888888;
@@ -176,8 +182,8 @@ nav ul li a:hover {
 }
 
 #progressbar li {
+	display: block;	
 	width: 183px;
-	display: block;
 	height: 30px;
 	float: left;
 	text-align: center;
@@ -203,23 +209,32 @@ nav ul li a:hover {
 	color: #242424;
 }
 
+
 /* Buttons */
-.button,tr td .button {
-	background: url(img/progressbar_active.png);
-	border: 1px solid #AAAAAA;
+.button, tr td .button {
 	width: 75px;
 	height: 20px;
-	margin: 0px;
+	margin: 0;
+	background: url(img/progressbar.png);
+	background-repeat: repeat-x;
+	border: 1px solid #AAAAAA;
+	font-size: 0.9em;
 	font-weight: normal;
 }
 
-/* Article Buttons */
+.button:hover {
+	background: url(img/progressbar_active.png);
+	background-repeat: repeat-x;
+}
+
+
+/* Buttons in Article */
 article .button {
-	float: left;
 	width: 100px;
 	height: 30px;
-	margin-top: 10px;
-	margin-right: 5px;
+	float: left;
+	margin: 10px 5px 0 0;
+	font-family: sans-serif;
 	font-weight: bold;
 }
 
@@ -228,27 +243,22 @@ article .next {
 	margin-right: 0px;
 }
 
-article .back {
-	
-}
-
 article .sitzplanbutton {
-	display: block;
-	clear: both;
+	display: block;	
 	width: 75px;
 	height: 20px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	margin-left: 170px;
+	clear: both;
+	margin: 5px 0 5px 170px; 
 	font-weight: normal;
 }
 
+
 /* Article */
-article h1,h2 {
+article h1, h2 {
 	margin: 0px 0 10px 0;
 	padding-bottom: 5px;
-	border-bottom: 1px solid #AAAAAA;
-	/* font-variant: small-caps; */
+	border-bottom: 1px solid #AAAAAA;	
+	/*font-variant: small-caps;*/
 }
 
 article h2 {
@@ -257,10 +267,11 @@ article h2 {
 	padding-bottom: 0px;
 }
 
-/* Article table */
+
+/* Article Table */
 article table {
-	border-collapse: collapse;
 	width: 100%;
+	border-collapse: collapse;
 	border: 1px solid #AAAAAA;
 }
 
@@ -274,18 +285,27 @@ th {
 	background-color: #98d8f4;
 }
 
-tr:HOVER {
+tr:nth-child(even) {
+	background-color: #FDFDFD;
+}
+
+tr:nth-child(odd) {
+	background-color: #F5F5F5;
+}
+
+
+tr:hover {
 	background-color: #DCF2FB;
 }
 
-table tr td input,table tr td label,table tr th input,table tr th label
-	{
+table tr td input, table tr td label, table tr th input, table tr th label {
 	display: inline;
-	float: left;
-	margin: 0px;
 	width: auto;
 	height: auto;
+	float: left;
+	margin: 0;
 }
+
 
 /* Article Form */
 article form {
@@ -294,67 +314,73 @@ article form {
 
 article fieldset {
 	width: 400px;
-	padding: 5px;
 	margin-bottom: 5px;
+	padding: 5px;
+	background-color: #FDFDFD;
 	border: 1px dotted #AAAAAA;
-	background-color: #FCFCFC;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 }
 
 article label {
 	display: block;
-	float: left;
 	width: 150px;
 	height: 20px;
+	float: left;
 	margin: 5px;
 	font-weight: bold;
 }
 
 article input,article select {
 	display: block;
-	float: left;
 	width: 220px;
 	height: 20px;
+	float: left;
 	margin: 5px;
 }
 
 
 /* Article Weitere */
-article .total {
+article.total {
 	border-bottom: double 3px #AAAAAA;
 	margin-bottom: 10px;
 }
 
-article .total_value {
+article.total_value {
 	float: right;
 	margin-right: 30px;
 }
 
-div .detail_view {
+div.detail_view {
 	width: 30%;
 	float: left;
 }
 
-div .main_view {
+div.main_view {
 	width: 67%;
 	margin-left: 3%;
 	float: left;
 }
 
 #sitzplanimg {
-	clear: both;
 	display: block;
-	overflow: auto;
 	width: 400px;
 	height: 250px;
+	clear: both;
+	overflow: auto;
 }
 
 
 /*Footer */
-footer a {
+footer ul li  {
 	display: block;
 	float: left;
 	color: #F1F1F1;
-	font-size: 1em;
+}
+
+footer a {
+	color: #F1F1F1;
 }
 
 footer a:hover {

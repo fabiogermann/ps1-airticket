@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta charset="UTF-8" />
-<title>Air Ticket | Flug auswählen</title>
-<link rel="stylesheet" href="./css/style.css" />
+	<meta charset="UTF-8" />
+	<title>Air Ticket | Flug auswählen</title>
+	<link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -13,13 +13,12 @@
 		<header>
 			<h1>AirTicket</h1>
 			<div id="login">
-				<form action="anmelden.jsp" method="post">
+				<form action="abmelden.jsp" method="post">
 					<fieldset>
-						<label for="email">E-Mail</label>
-						<input type="email" id="email" name="email" required="required" />
-						<label for="passwort">Passwort</label>
-						<input type="password" id="passwort" name="passwort" required="required" />
-						<input type="submit" id="submit_login" name="login" value="Anmelden" class="button" />
+						<label>
+							<a href="benutzer_konto.html" alt="Mein Konto">air.ticket@example.com</a>
+						</label>
+						<input type="submit" id="submit_logout" name="logout" value="Abmelden" class="button" />
 					</fieldset>
 				</form>
 			</div>
@@ -41,7 +40,7 @@
 					<h1>Flug auswählen</h1>
 					<div id="hinflug">
 						<h2>Hinflug</h2>
-						<table border="1">
+						<table>
 							<tr>
 								<th>Flugnummer</th>
 								<th>Abflugdatum | Zeit</th>
@@ -90,29 +89,25 @@
 								<td><input type="radio" id="radio_flug_h3_b" name="flug_auswaehlen_h" value="Flug_h3_b" /> <label for="radio_flug_h3_b">600 CHF</label></td>
 							</tr>
 							<!-- 
-						<tr>
-							<td>SQ 345</td>
-							<td>27.11.12 | 17:25</td>
-							<td>27.11.11 | 18:35</td>
-							<td>1:10h</td>
-							<td>Zürich</td>
-							<td>London</td>
-							<td>Business: 11 <br/> Economy: 150</td>
-							<td>
-								<input type="radio" id="radio_flug_h4_e" name="flug_auswaehlen_h" value="Flug_h4_e" />
-								<label for="radio_flug_h4_e">244 CHF</label>
-							</td>
-							<td>
-								<input type="radio" id="radio_flug_h4_b" name="flug_auswaehlen_h" value="Flug_h4_b" />
-								<label for="radio_flug_h4_b">566 CHF</label>
-							</td>
-						</tr>
-						 -->
+							<tr>
+								<td>SQ 345</td>
+								<td>27.11.12 | 17:25</td>
+								<td>27.11.11 | 18:35</td>
+								<td>1:10h</td>
+								<td>Zürich</td>
+								<td>London</td>
+								<td>Business: 11 <br/> Economy: 150</td>
+								<td><input type="radio" id="radio_flug_h4_e" name="flug_auswaehlen_h" value="Flug_h4_e" /> <label for="radio_flug_h4_e">244 CHF</label></td>
+								<td><input type="radio" id="radio_flug_h4_b" name="flug_auswaehlen_h" value="Flug_h4_b" /> <label for="radio_flug_h4_b">566 CHF</label>
+								</td>
+							</tr>
+							-->
 						</table>
 					</div>
+					
 					<div id="rueckflug">
 						<h2>Rückflug</h2>
-						<table border="1">
+						<table>
 							<tr>
 								<th>Flugnummer</th>
 								<th>Abflugdatum | Zeit</th>
@@ -161,44 +156,39 @@
 								<td><input type="radio" id="radio_flug_r3_b" name="flug_auswaehlen_r" value="Flug_r3_b" /> <label for="radio_flug_r3_b">561 CHF</label></td>
 							</tr>
 							<!-- 
-						<tr>
-							<td>SQ 654</td>
-							<td>01.12.12 | 18:25</td>
-							<td>01.12.12 | 19:35</td>
-							<td>1:15h</td>
-							<td>London</td>
-							<td>Zürich</td>
-							<td>Business: 27 <br/> Economy: 140</td>
-							<td>
-								<input type="radio" id="radio_flug_r4_e" name="flug_auswaehlen_r" value="Flug_r4_e" />
-								<label for="radio_flug_r4_e">199 CHF</label>
-							</td>
-							<td>
-								<input type="radio" id="radio_flug_r4_b" name="flug_auswaehlen_r" value="Flug_r4_b" />
-								<label for="radio_flug_r4_b">435 CHF</label>
-							</td>
-						</tr>
-						-->
+							<tr>
+								<td>SQ 654</td>
+								<td>01.12.12 | 18:25</td>
+								<td>01.12.12 | 19:35</td>
+								<td>1:15h</td>
+								<td>London</td>
+								<td>Zürich</td>
+								<td>Business: 27 <br/> Economy: 140</td>
+								<td><input type="radio" id="radio_flug_r4_e" name="flug_auswaehlen_r" value="Flug_r4_e" /> <label for="radio_flug_r4_e">199 CHF</label></td>
+								<td><input type="radio" id="radio_flug_r4_b" name="flug_auswaehlen_r" value="Flug_r4_b" /> <label for="radio_flug_r4_b">435 CHF</label></td>
+							</tr>
+							-->
 						</table>
 					</div>
 
 					<input type="submit" id="submit_auswahl" name="submit_auswahl" value="Auswählen" class="button next" />
-
 				</form>
-				<!-- <input type="button" id="zuruek" name="zuruek" value="Zurück" class="button back" onclick="history.back()" /> -->
+				
+				<!-- <input type="button" id="back" name="back" value="Zurück" class="button back" onclick="history.back()" /> -->
 				<form action="index.html" method="post">
-					<input type="submit" id="zuruek" name="zuruek" value="Zurück" class="button back" />
+					<input type="submit" id="back" name="back" value="Zurück" class="button back" />
 				</form>
 
 			</article>
+			
 			<nav>
 				<ul>
-					<li><a href="index.html">Flug finden</a></li>
+					<li><a href="index.html" alt="Flug finden">Flug finden</a></li>
 					<!-- IF !Angemeldet -->
-					<li><a href="benutzer_anmelden.html">Anmelden</a></li>
-					<li><a href="benutzer_registrieren.html">Registrieren</a></li>
+					<li><a href="benutzer_anmelden.html" alt="Anmelden">Anmelden</a></li>
+					<li><a href="benutzer_registrieren.html" alt="Registrieren">Registrieren</a></li>
 					<!-- IF !Else -->
-					<li><a href="benutzer_konto.html">Mein Konto</a></li>
+					<li><a href="benutzer_konto.html" alt="Mein Konto">Mein Konto</a></li>
 				</ul>
 			</nav>
 
@@ -206,9 +196,9 @@
 
 		<footer>
 			<ul>
-				<li><a href="kontakt.html">Kontakt&nbsp;|&nbsp;</a></li>
-				<li><a href="sitemap.html">Sitemap&nbsp;|&nbsp;</a></li>
-				<li><a href="impressum.html">Impressum</a></li>
+				<li><a href="kontakt.html" alt="Kontakt">Kontakt</a>&nbsp;|&nbsp;</li>
+				<li><a href="sitemap.html" alt="Sitemap">Sitemap</a>&nbsp;|&nbsp;</li>
+				<li><a href="impressum.html" alt="Impressum">Impressum</a></li>
 			</ul>
 		</footer>
 

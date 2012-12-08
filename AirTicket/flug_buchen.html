@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta charset="UTF-8" />
-<title>Air Ticket | Flug buchen</title>
-<link rel="stylesheet" href="./css/style.css" />
+	<meta charset="UTF-8" />
+	<title>Air Ticket | Flug buchen</title>
+	<link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
@@ -13,13 +13,12 @@
 		<header>
 			<h1>AirTicket</h1>
 			<div id="login">
-				<form action="anmelden.jsp" method="post">
+				<form action="abmelden.jsp" method="post">
 					<fieldset>
-						<label for="email">E-Mail</label>
-						<input type="email" id="email" name="email" required="required" />
-						<label for="passwort">Passwort</label>
-						<input type="password" id="passwort" name="passwort" required="required" />
-						<input type="submit" id="submit_login" name="login" value="Anmelden" class="button" />
+						<label>
+							<a href="benutzer_konto.html" alt="Mein Konto">air.ticket@example.com</a>
+						</label>
+						<input type="submit" id="submit_logout" name="logout" value="Abmelden" class="button" />
 					</fieldset>
 				</form>
 			</div>
@@ -40,7 +39,7 @@
 
 				<div id="flugdetails">
 					<h2>Ihr Hinflug</h2>
-					<table border="1">
+					<table>
 						<tr>
 							<th>Flugnummer</th>
 							<th>Abflugdatum | Zeit</th>
@@ -62,8 +61,9 @@
 							<td>250 CHF</td>
 						</tr>
 					</table>
+					
 					<h2>Ihr Rückflug</h2>
-					<table border="1">
+					<table>
 						<tr>
 							<th>Flugnummer</th>
 							<th>Abflugdatum | Zeit</th>
@@ -85,16 +85,21 @@
 							<td>375 CHF</td>
 						</tr>
 					</table>
+					
 					<h2>Total</h2>
-					<div class="total"><strong>Zürich - London - Zürich<span class="total_value">625 CHF</span></strong></div>
+					<div class="total">
+						<strong>Zürich - London - Zürich
+							<span class="total_value">625 CHF</span>
+						</strong>
+					</div>
 					
 					<form action="flug_bestaetigung.html" method="post">
 						<input type="submit" id="submit_buchen" name="submit_buchen" value="Flug buchen" class="button next" />
 					</form>
 					
-					<!-- <input type="button" id="zuruek" name="zuruek" value="Zurück" class="button back" onclick="history.back()" /> -->
+					<!-- <input type="button" id="back" name="back" value="Zurück" class="button back" onclick="history.back()" /> -->
 					<form action="flug_auswaehlen.html" method="post">
-						<input type="submit" id="zuruek" name="zuruek" value="Zurück" class="button back" />
+						<input type="submit" id="back" name="back" value="Zurück" class="button back" />
 					</form>
 					
 				</div>
@@ -102,12 +107,12 @@
 
 			<nav>
 				<ul>
-					<li><a href="index.html">Flug finden</a></li>
+					<li><a href="index.html" alt="Flug finden">Flug finden</a></li>
 					<!-- IF !Angemeldet -->
-					<li><a href="benutzer_anmelden.html">Anmelden</a></li>
-					<li><a href="benutzer_registrieren.html">Registrieren</a></li>
+					<li><a href="benutzer_anmelden.html" alt="Anmelden">Anmelden</a></li>
+					<li><a href="benutzer_registrieren.html" alt="Registrieren">Registrieren</a></li>
 					<!-- IF !Else -->
-					<li><a href="benutzer_konto.html">Mein Konto</a></li>
+					<li><a href="benutzer_konto.html" alt="Mein Konto">Mein Konto</a></li>
 				</ul>
 			</nav>
 
@@ -115,9 +120,9 @@
 
 		<footer>
 			<ul>
-				<li><a href="kontakt.html">Kontakt&nbsp;|&nbsp;</a></li>
-				<li><a href="sitemap.html">Sitemap&nbsp;|&nbsp;</a></li>
-				<li><a href="impressum.html">Impressum</a></li>
+				<li><a href="kontakt.html" alt="Kontakt">Kontakt</a>&nbsp;|&nbsp;</li>
+				<li><a href="sitemap.html" alt="Sitemap">Sitemap</a>&nbsp;|&nbsp;</li>
+				<li><a href="impressum.html" alt="Impressum">Impressum</a></li>
 			</ul>
 		</footer>
 
