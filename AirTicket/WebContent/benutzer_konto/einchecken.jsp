@@ -1,32 +1,20 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Air Ticket | Einchecken</title>
-	<link rel="stylesheet" href="./css/style.css" />
-</head>
+<%! String title = "Einchecken"; %>
 
 <body>
 	<div id="seite">
 
-		<header>
-			<h1>AirTicket</h1>
-			<div id="login">
-				<form action="abmelden.jsp" method="post">
-					<fieldset>
-						<label>
-							<a href="benutzer_konto.html" alt="Mein Konto">air.ticket@example.com</a>
-						</label>
-						<input type="submit" id="submit_logout" name="logout" value="Abmelden" class="button" />
-					</fieldset>
-				</form>
-			</div>
-		</header>
+		<%@include file="../include/header.jsp"%>
 
 		<section>
+
+			<%@include file="../include/progressbar.jsp"%>
+
 			<article>
-				<h1>Sitzplatz ausw√§hlen</h1>
+				<h1><%=title %></h1>
+				<h1>Sitzplatz ausw‰hlen</h1>
 				
 				<div class="detail_view">
 					<h2>Details zu LH 747</h2>
@@ -53,7 +41,7 @@
 						</tr>
 						<tr>
 							<th>Startflughafen</th>
-							<td>Z√ºrich</td>
+							<td>Z¸rich</td>
 						</tr>
 						<tr>
 							<th>Zielflughafen</th>
@@ -69,14 +57,14 @@
 				<div class="main_view">
 					<h2>Sitzplan Airbus A380</h2>
 					<p>
-						Bitte w√§hlen Sie einen Sitzplatz durch Anklicken aus.
+						Bitte w‰hlen Sie einen Sitzplatz durch Anklicken aus.
 						<br />
 						<!--
 						<br />
 						Bereits gebucht: <strong>-</strong> 
 						 -->
 						<br />
-						Aktuell ausgew√§hlt: <strong>5D</strong>
+						Aktuell ausgew‰hlt: <strong>5D</strong>
 					</p>
 					<input type="button" id="up" name="up" value="Nach Oben" class="button sitzplanbutton" />
 					<img id="sitzplanimg" alt="sitzplan" width="100" height="100" src="./css/img/footer.png">
@@ -86,39 +74,24 @@
 				<form action="#" method="post">
 					<input type="button" id="einchecken" name="einchecken" value="Einchecken" class="button next" />
 					<!--  
-						<input type="submit" id="aendern" name="aendern" value="Sitz √§ndern" />
+						<input type="submit" id="aendern" name="aendern" value="Sitz ‰ndern" />
 						<input type="submit" id="stornieren" name="stornieren" value="Stornieren" />
 					-->
 				</form>
 
-				<!-- <input type="button" id="back" name="back" value="Zur√ºck" class="button back" onclick="history.back()" /> -->
+				<!-- <input type="button" id="back" name="back" value="Zur¸ck" class="button back" onclick="history.back()" /> -->
 				<form action="benutzer_konto.html" method="post">
-					<input type="submit" id="back" name="back" value="Zur√ºck" class="button back" />
+					<input type="submit" id="back" name="back" value="Zur¸ck" class="button back" />
 				</form>
 				
-			</article>
-			
-			<nav>
-				<ul>
-					<li><a href="index.html" alt="Flug finden">Flug finden</a></li>
-					<!-- IF !Angemeldet -->
-					<li><a href="benutzer_anmelden.html" alt="Anmelden">Anmelden</a></li>
-					<li><a href="benutzer_registrieren.html" alt="Registrieren">Registrieren</a></li>
-					<!-- IF !Else -->
-					<li><a href="benutzer_konto.html" alt="Mein Konto">Mein Konto</a></li>
-				</ul>
-			</nav>
+				</article>
+
+			<%@include file="../include/nav.jsp"%>
 
 		</section>
 
-		<footer>
-			<ul>
-				<li><a href="kontakt.html" alt="Kontakt">Kontakt</a>&nbsp;|&nbsp;</li>
-				<li><a href="sitemap.html" alt="Sitemap">Sitemap</a>&nbsp;|&nbsp;</li>
-				<li><a href="impressum.html" alt="Impressum">Impressum</a></li>
-			</ul>
-		</footer>
-		
+		<%@include file="../include/footer.jsp"%>
+
 	</div>
 </body>
 </html>

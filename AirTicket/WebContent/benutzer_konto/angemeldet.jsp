@@ -1,32 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Air Ticket | Anmelden</title>
-	<link rel="stylesheet" href="./css/style.css" />
-</head>
+<%! String title = "Angemeldet"; %>
 
 <body>
 	<div id="seite">
-
-		<header>
-			<h1>AirTicket</h1>
-			<div id="login">
-				<form action="abmelden.jsp" method="post">
-					<fieldset>
-						<label>
-							<a href="benutzer_konto.html" alt="Mein Konto">air.ticket@example.com</a>
-						</label>
-						<input type="submit" id="submit_logout" name="logout" value="Abmelden" class="button" />
-					</fieldset>
-				</form>
-			</div>
-		</header>
+		<%@include file="../include/header.jsp"%>
 
 		<section>
+
 			<article>
-				<h1>Anmelden</h1>
+				<h1><%=title %></h1>
 				<p>
 					Sie sind nun Angemeldet.
 					<br />
@@ -36,28 +20,14 @@
 					<br />
 					<a href="index.html" alt="Flug finden">Einen Flug finden</a>
 				</p>
+					
 			</article>
-
-			<nav>
-				<ul>
-					<li><a href="index.html" alt="Flug finden">Flug finden</a></li>
-					<!-- IF !Angemeldet -->
-					<li><a href="benutzer_anmelden.html" alt="Anmelden">Anmelden</a></li>
-					<li><a href="benutzer_registrieren.html" alt="Registrieren">Registrieren</a></li>
-					<!-- IF !Else -->
-					<li><a href="benutzer_konto.html" alt="Mein Konto">Mein Konto</a></li>
-				</ul>
-			</nav>
+			
+			<%@include file="../include/nav.jsp"%>
 
 		</section>
 
-		<footer>
-			<ul>
-				<li><a href="kontakt.html" alt="Kontakt">Kontakt</a>&nbsp;|&nbsp;</li>
-				<li><a href="sitemap.html" alt="Sitemap">Sitemap</a>&nbsp;|&nbsp;</li>
-				<li><a href="impressum.html" alt="Impressum">Impressum</a></li>
-			</ul>
-		</footer>
+		<%@include file="../include/footer.jsp"%>
 
 	</div>
 </body>
