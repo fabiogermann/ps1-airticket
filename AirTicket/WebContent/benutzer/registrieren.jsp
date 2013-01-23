@@ -1,34 +1,18 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Air Ticket | Registrieren</title>
-	<link rel="stylesheet" href="./css/style.css" />
-</head>
+<%! String title = "Registrieren"; %>
 
 <body>
 	<div id="seite">
 
-		<header>
-			<h1>AirTicket</h1>
-			<div id="login">
-				<form action="anmelden.jsp" method="post">
-					<fieldset>
-						<label for="email1">E-Mail</label>
-						<input type="email" id="email1" name="email" required="required" />
-						<label for="passwort1">Passwort</label>
-						<input type="password" id="passwort1" name="passwort" required="required" />
-						<input type="submit" id="submit_login" name="login" value="Anmelden" class="button" />
-					</fieldset>
-				</form>
-			</div>
-		</header>
+		<%@include file="../include/header.jsp"%>
 
 		<section>
+
 			<article>
-				<h1>Registrieren</h1>
-				<form action="benutzer_registriert.html" method="post">
+				<h1><%=title %></h1>
+				<form action="benutzer_registriert.jsp" method="post">
 					<fieldset>
 						<legend>Benutzerkonto</legend>
 						<label for="email">E-Mail</label>
@@ -61,31 +45,18 @@
 						<label for="land">Land</label>
 						<input type="text" id="land" name="land" required="required" />
 					</fieldset>
+					
+					<p>Falls bereits ein Konto haben können sie sich hier <a href="../benutzer_konto/angemeldet.jsp" alt="Anmelden">anmelden</a>.</p>
 					<input type="submit" id="submit_register" name="submit_register" value="Registrieren" class="button" />
 				</form>
-				
+		
 			</article>
 
-			<nav>
-				<ul>
-					<li><a href="index.html" alt="Flug finden">Flug finden</a></li>
-					<!-- IF !Angemeldet -->
-					<li><a href="benutzer_anmelden.html" alt="Anmelden">Anmelden</a></li>
-					<li><a href="benutzer_registrieren.html" alt="Registrieren">Registrieren</a></li>
-					<!-- IF !Else -->
-					<li><a href="benutzer_konto.html" alt="Mein Konto">Mein Konto</a></li>
-				</ul>
-			</nav>
+			<%@include file="../include/nav.jsp"%>
 
 		</section>
 
-		<footer>
-			<ul>
-				<li><a href="kontakt.html" alt="Kontakt">Kontakt</a>&nbsp;|&nbsp;</li>
-				<li><a href="sitemap.html" alt="Sitemap">Sitemap</a>&nbsp;|&nbsp;</li>
-				<li><a href="impressum.html" alt="Impressum">Impressum</a></li>
-			</ul>
-		</footer>
+		<%@include file="../include/footer.jsp"%>
 
 	</div>
 </body>

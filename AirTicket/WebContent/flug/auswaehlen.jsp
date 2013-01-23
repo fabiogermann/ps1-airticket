@@ -1,43 +1,20 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Air Ticket | Flug auswÃ¤hlen</title>
-	<link rel="stylesheet" href="./css/style.css" />
-</head>
+<%! String title = "Flug auswählen"; %>
 
 <body>
 	<div id="seite">
 
-		<header>
-			<h1>AirTicket</h1>
-			<div id="login">
-				<form action="abmelden.jsp" method="post">
-					<fieldset>
-						<label>
-							<a href="benutzer_konto.html" alt="Mein Konto">air.ticket@example.com</a>
-						</label>
-						<input type="submit" id="submit_logout" name="logout" value="Abmelden" class="button" />
-					</fieldset>
-				</form>
-			</div>
-		</header>
+		<%@include file="../include/header.jsp"%>
 
 		<section>
 
-			<div id="progressbar">
-				<ul>
-					<li><p>1. Flug finden</p></li>
-					<li class="active"><p>2. Flug auswÃ¤hlen</p></li>
-					<li><p>3. Flug buchen</p></li>
-					<li><p>4. FlugbestÃ¤tigung</p></li>
-				</ul>
-			</div>
+			<%@include file="../include/progressbar.jsp"%>
 
 			<article>
-				<form action="flug_buchen.html" method="post">
-					<h1>Flug auswÃ¤hlen</h1>
+				<h1><%=title %></h1>
+				<form action="buchen.jsp" method="post">
 					<div id="hinflug">
 						<h2>Hinflug</h2>
 						<table>
@@ -48,7 +25,7 @@
 								<th>Dauer</th>
 								<th>Startflughafen</th>
 								<th>Zielflughafen</th>
-								<th>VerfÃ¼gbarkeit</th>
+								<th>Verfügbarkeit</th>
 								<th>Economy</th>
 								<th>Business</th>
 							</tr>
@@ -57,7 +34,7 @@
 								<td>27.11.12 | 09:20</td>
 								<td>27.11.12 | 10:35</td>
 								<td>1:15h</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>London</td>
 								<td>Business: 44 <br /> Economy: 122
 								</td>
@@ -69,7 +46,7 @@
 								<td>27.11.12 | 10:35</td>
 								<td>27.11.12 | 11:53</td>
 								<td>1.18:h</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>London</td>
 								<td>Business: 12 <br /> Economy: 196
 								</td>
@@ -81,7 +58,7 @@
 								<td>27.11.12 | 15:20</td>
 								<td>27.11.12 | 16:35</td>
 								<td>1:15h</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>London</td>
 								<td>Business: 38 <br /> Economy: 96
 								</td>
@@ -94,7 +71,7 @@
 								<td>27.11.12 | 17:25</td>
 								<td>27.11.11 | 18:35</td>
 								<td>1:10h</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>London</td>
 								<td>Business: 11 <br/> Economy: 150</td>
 								<td><input type="radio" id="radio_flug_h4_e" name="flug_auswaehlen_h" value="Flug_h4_e" /> <label for="radio_flug_h4_e">244 CHF</label></td>
@@ -106,7 +83,7 @@
 					</div>
 					
 					<div id="rueckflug">
-						<h2>RÃ¼ckflug</h2>
+						<h2>Rückflug</h2>
 						<table>
 							<tr>
 								<th>Flugnummer</th>
@@ -115,7 +92,7 @@
 								<th>Dauer</th>
 								<th>Startflughafen</th>
 								<th>Zielflughafen</th>
-								<th>VerfÃ¼gbarkeit</th>
+								<th>Verfügbarkeit</th>
 								<th>Economy</th>
 								<th>Business</th>
 							</tr>
@@ -125,7 +102,7 @@
 								<td>29.11.12 | 11:35</td>
 								<td>1:15h</td>
 								<td>London</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>Business: 22 <br /> Economy: 210
 								</td>
 								<td><input type="radio" id="radio_flug_r1_e" name="flug_auswaehlen_r" value="Flug_r1_e" /> <label for="radio_flug_r1_e">250 CHF</label></td>
@@ -137,7 +114,7 @@
 								<td>30.11.12 | 12:53</td>
 								<td>1:18h</td>
 								<td>London</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>Business: 8 <br /> Economy: 120
 								</td>
 								<td><input type="radio" id="radio_flug_r2_e" name="flug_auswaehlen_r" value="Flug_r2_e" /> <label for="radio_flug_r2_e">266 CHF</label></td>
@@ -149,7 +126,7 @@
 								<td>30.11.12 | 17:35</td>
 								<td>1:15h</td>
 								<td>London</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>Business: 36 <br /> Economy: 116
 								</td>
 								<td><input type="radio" id="radio_flug_r3_e" name="flug_auswaehlen_r" value="Flug_r3_e" /> <label for="radio_flug_r3_e">227 CHF</label></td>
@@ -162,7 +139,7 @@
 								<td>01.12.12 | 19:35</td>
 								<td>1:15h</td>
 								<td>London</td>
-								<td>ZÃ¼rich</td>
+								<td>Zürich</td>
 								<td>Business: 27 <br/> Economy: 140</td>
 								<td><input type="radio" id="radio_flug_r4_e" name="flug_auswaehlen_r" value="Flug_r4_e" /> <label for="radio_flug_r4_e">199 CHF</label></td>
 								<td><input type="radio" id="radio_flug_r4_b" name="flug_auswaehlen_r" value="Flug_r4_b" /> <label for="radio_flug_r4_b">435 CHF</label></td>
@@ -171,36 +148,21 @@
 						</table>
 					</div>
 
-					<input type="submit" id="submit_auswahl" name="submit_auswahl" value="AuswÃ¤hlen" class="button next" />
+					<input type="submit" id="submit_auswahl" name="submit_auswahl" value="Auswählen" class="button next" />
 				</form>
 				
-				<!-- <input type="button" id="back" name="back" value="ZurÃ¼ck" class="button back" onclick="history.back()" /> -->
+				<!-- <input type="button" id="back" name="back" value="Zurück" class="button back" onclick="history.back()" /> -->
 				<form action="index.html" method="post">
-					<input type="submit" id="back" name="back" value="ZurÃ¼ck" class="button back" />
+					<input type="submit" id="back" name="back" value="Zurück" class="button back" />
 				</form>
 
 			</article>
-			
-			<nav>
-				<ul>
-					<li><a href="index.html" alt="Flug finden">Flug finden</a></li>
-					<!-- IF !Angemeldet -->
-					<li><a href="benutzer_anmelden.html" alt="Anmelden">Anmelden</a></li>
-					<li><a href="benutzer_registrieren.html" alt="Registrieren">Registrieren</a></li>
-					<!-- IF !Else -->
-					<li><a href="benutzer_konto.html" alt="Mein Konto">Mein Konto</a></li>
-				</ul>
-			</nav>
+
+			<%@include file="../include/nav.jsp"%>
 
 		</section>
 
-		<footer>
-			<ul>
-				<li><a href="kontakt.html" alt="Kontakt">Kontakt</a>&nbsp;|&nbsp;</li>
-				<li><a href="sitemap.html" alt="Sitemap">Sitemap</a>&nbsp;|&nbsp;</li>
-				<li><a href="impressum.html" alt="Impressum">Impressum</a></li>
-			</ul>
-		</footer>
+		<%@include file="../include/footer.jsp"%>
 
 	</div>
 </body>
