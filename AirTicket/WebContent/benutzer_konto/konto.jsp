@@ -1,7 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<%!String title = "Benutzerkonto";%>
+<%! String title = "Benutzerkonto";%>
 
 <body>
 	<div id="seite">
@@ -10,70 +11,61 @@
 
 		<section>
 
-			<%@include file="../include/progressbar.jsp"%>
-
 			<article>
 				<h1><%=title%></h1>
 				<h2>Ihre Tickets</h2>
-				<form action="sitz_einchecken.html" method="post">
-					<table>
+				<table>
+					<tr>
+						<th>Flugnummer</th>
+						<th>Abflugdatum <br/> Zeit</th>
+						<th>Ankunftsdatum <br/> Zeit</th>
+						<th>Startflughafen</th>
+						<th>Zielflughafen</th>
+						<th>Flugdauer <br/> Klasse</th>
+						<th>Sitz</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<%
+					Benutzer benutzer =  (Benutzer)session.getAttribute("Benutzer"); 
+					if(benutzer != null) {	
+						Map<Integer, Ticket> tickets = benutzer.getTickets(); 
+						for (Ticket ticket : tickets.values()){
+					%>
 						<tr>
-							<th>Flugnummer</th>
-							<th>Abflugdatum | Zeit</th>
-							<th>Ankunftsdatum | Zeit</th>
-							<th>Startflughafen</th>
-							<th>Zielflughafen</th>
-							<th>Flugdauer</th>
-							<th>Sitz</th>
-							<th></th>
-							<th></th>
+							<td><%=ticket.getFlug().getNummer() %></td>
+							<td><%=ticket.getAbflugdatum(null) %><br/><%=ticket.getFlug().getAbflugzeit(null) %></td>
+							<td><%=ticket.getAnkunftdatum(null) %><br/><%=ticket.getFlug().getAnkunftzeit(null) %></td>
+							<td><%=ticket.getFlug().getVon().getName() %> (<%=ticket.getFlug().getVon().getCode() %>)<br/><%=ticket.getFlug().getVon().getStadt() %> <%=ticket.getFlug().getVon().getLand() %></td>
+							<td><%=ticket.getFlug().getNach().getName() %> (<%=ticket.getFlug().getNach().getCode() %>)<br/><%=ticket.getFlug().getNach().getStadt() %> <%=ticket.getFlug().getNach().getLand() %></td>
+							<td><%=ticket.getFlug().getDauer() %><br/><%=ticket.getKlasse() %></td>
+							<td> 
+							<% if (ticket.getSitzreihe() != 0){ %>
+								<%=ticket.getSitzreihe() %><%=ticket.getSitzspalteAlpha() %>
+							<% } else { %> - <% } %>	
+							</td>
+							<td>
+								<form action="./einchecken.jsp" method="get">
+									<% if (ticket.getSitzreihe() != 0){ %>
+										<input type="submit" id="aendern_<%=ticket.getId() %>" name="aendern" value="Ã„ndern" class="button" />
+									<% } else { %>
+										<input type="submit" id="einchecken_<%=ticket.getId() %>" name="einchecken" value="Einchecken" class="button" />
+									<% } %>	
+									<input type="hidden" name="ticketId" value="<%=ticket.getId() %>" />
+									<input type="hidden" name="flugId" value="<%=ticket.getFlug() %>" />
+								</form>	
+							</td>
+							<td>
+								<form action="<%=request.getContextPath()%>/konto" method="get">
+									<input type="submit" id="stornieren_<%=ticket.getId() %>" name="stornieren" value="Stornieren" class="button" />
+									<input type="hidden" name="ticketId" value="<%=ticket.getId() %>" />
+									<input type="hidden" name="flugId" value="<%=ticket.getFlug() %>" />
+								</form>	
+							</td>
 						</tr>
-						<tr>
-							<td>LH 747</td>
-							<td>27.11.12 09:20</td>
-							<td>27.11.12 10:35</td>
-							<td>Zürich</td>
-							<td>London</td>
-							<td>1:15h</td>
-							<td>-</td>
-							<td><input type="submit" id="einchecken_K2482" name="einchecken_K2482" value="Einchecken" class="button" /></td>
-							<td><input type="submit" id="stornieren_K2482" name="stornieren_K2482" value="Stornieren" class="button" /></td>
-						</tr>
-						<tr>
-							<td>AB 8589</td>
-							<td>27.11.12 10:35</td>
-							<td>27.11.12 11:53</td>
-							<td>Zürich</td>
-							<td>London</td>
-							<td>1:18h</td>
-							<td>1</td>
-							<td><input type="submit" id="aendern_AB5889" name="aendern_AB5889" value="Sitz ändern" class="button" /></td>
-							<td><input type="submit" id="stornieren_AB5889" name="stornieren_AB5889" value="Stornieren" class="button" /></td>
-						</tr>
-						<tr>
-							<td>AF 1115</td>
-							<td>27.11.12 15:20</td>
-							<td>27.11.12 16:35</td>
-							<td>Zürich</td>
-							<td>London</td>
-							<td>1:15h</td>
-							<td>43F</td>
-							<td><input type="submit" id="aendern_AF1115" name="aendern_AF1115" value="Sitz ändern" class="button" /></td>
-							<td><input type="submit" id="stornieren_AF1115" name="stornieren_AF1115" value="Stornieren" class="button" /></td>
-						</tr>
-						<tr>
-							<td>SQ 345</td>
-							<td>27.11.12 17:25</td>
-							<td>27.11.12 18:35</td>
-							<td>Zürich</td>
-							<td>London</td>
-							<td>1:10h</td>
-							<td>-</td>
-							<td><input type="submit" id="einchecken_SQ345" name="einchecken_SQ345" value="Einchecken" class="button" /></td>
-							<td><input type="submit" id="stornieren_SQ345" name="stornieren_SQ345" value="Stornieren" class="button" /></td>
-						</tr>
+						<% } %>
+					<% } %>
 					</table>
-				</form>
 			</article>
 
 			<%@include file="../include/nav.jsp"%>

@@ -12,7 +12,8 @@
 
 			<article>
 				<h1><%=title %></h1>
-				<form action="benutzer_registriert.jsp" method="post">
+				<!-- <form action="benutzer_registriert.jsp" method="post"> -->
+				<form action="../registrieren" method="post">
 					<fieldset>
 						<legend>Benutzerkonto</legend>
 						<label for="email">E-Mail</label>

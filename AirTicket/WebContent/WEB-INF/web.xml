@@ -1,55 +1,66 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- -->
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
-	<filter id="LoginFilter">
-		<filter-name>LoginFilter</filter-name>
-		<filter-class>org.zhaw.airticket.LoginFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>LoginFilter</filter-name>
-		<url-pattern>/j_security_check</url-pattern>
-	</filter-mapping>
-	<security-constraint>
-		<display-name>Authenticated</display-name>
-		<web-resource-collection>
-			<web-resource-name>flug</web-resource-name>
-			<url-pattern>/flug/bestaetigung.jsp</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
-		</web-resource-collection>
-		<web-resource-collection>
-			<web-resource-name>benutzer konto</web-resource-name>
-			<url-pattern>/benutzer_konto/*</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
-		</web-resource-collection>
-		<web-resource-collection>
-			<web-resource-name>benutzerkonto</web-resource-name>
-			<url-pattern>/checkin/*</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>user</role-name>
-		</auth-constraint>
-		<user-data-constraint>
-			<description>No SSL required</description>
-			<transport-guarantee>NONE</transport-guarantee>
-		</user-data-constraint>
-	</security-constraint>
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<realm-name>default</realm-name>
-		<form-login-config>
-			<form-login-page>/benutzer/anmelden.jsp</form-login-page>
-			<form-error-page>/FAILED.html</form-error-page>
-		</form-login-config>
-	</login-config>
-	<security-role>
-		<description>user</description>
-		<role-name>user</role-name>
-	</security-role>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+ <!--  
+ <servlet>
+    <load-on-startup>1</load-on-startup>
+	<servlet-name>InitTestDB</servlet-name>
+	<servlet-class>org.zhaw.airticket.debug.InitTestDB</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>InitTestDB</servlet-name>
+	<url-pattern>/initdb</url-pattern>
+</servlet-mapping>
+ --> 
+  
+  
+  <filter>
+    <filter-name>AirFilter</filter-name>
+    <filter-class>org.zhaw.airticket.servlet.AirFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AirFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <security-constraint>
+    <display-name>Authenticated</display-name>
+    <web-resource-collection>
+      <web-resource-name>flug</web-resource-name>
+      <url-pattern>/flug/bestaetigung.jsp</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>benutzer konto</web-resource-name>
+      <url-pattern>/benutzer_konto/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>benutzerkonto</web-resource-name>
+      <url-pattern>/checkin/*</url-pattern>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>user</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <description>No SSL required</description>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>default</realm-name>
+    <form-login-config>
+      <form-login-page>/benutzer/anmelden.jsp</form-login-page>
+      <form-error-page>/FAILED.html</form-error-page>
+    </form-login-config>
+  </login-config>
+  <security-role>
+    <description>user</description>
+    <role-name>user</role-name>
+  </security-role>
 </web-app>

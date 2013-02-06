@@ -108,7 +108,32 @@
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
-        <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+       <!--@Mo <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/> -->
+        
+        	
+<!-- org.apache.derby.jdbc.ClientDriver -->
+
+	
+	
+<!--
+<Realm className="org.apache.catalina.realm.DataSourceRealm"
+   dataSourceName="java:comp/env/jdbc/airdb"
+   userTable="Benutzer" userNameCol="email" userCredCol="passwort"
+   userRoleTable="Rolle" roleNameCol="rollen"/>
+  -->
+<!-- 
+   driverName="org.apache.derby.jdbc.EmbeddedDriver"
+   connectionURL="jdbc:derby:airdb"
+ -->
+
+<Realm className="org.apache.catalina.realm.JDBCRealm"
+      driverName="org.apache.derby.jdbc.ClientDriver"
+   connectionURL="jdbc:derby://localhost:1527/airdb;user=dbuser;password=dbuser"
+       userTable="Benutzer" userNameCol="email" userCredCol="passwort"
+   userRoleTable="Rolle" roleNameCol="rollen"/>
+        
+        
+        
       </Realm>
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
@@ -124,7 +149,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="AirTicket" path="/AirTicket" reloadable="true" source="org.eclipse.jst.jee.server:AirTicket"/></Host>
+      <Context docBase="airticket" path="/airticket" reloadable="true" source="org.eclipse.jst.jee.server:airticket"/></Host>
     </Engine>
   </Service>
 </Server>

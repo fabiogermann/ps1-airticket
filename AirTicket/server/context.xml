@@ -14,7 +14,8 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
---><!-- The contents of this file will be loaded for each web application --><Context>
+--><!-- The contents of this file will be loaded for each web application -->
+<Context>
 
     <!-- Default set of monitored resources -->
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
@@ -29,5 +30,26 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
+    <!-- 
+              driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
+              url="jdbc:derby:airdb"
+              
+              driverClassName="org.apache.derby.jdbc.ClientDriver"
+        	  url="jdbc:derby://localhost:1527/airdb"
+              
+              
+     -->
+    <Resource name="jdbc/airdb"
+    		  auth="Container"
+              type="javax.sql.DataSource"  
+              description="DB for AirTicket"
+              username="dbuser" 
+              password="dbuser" 
+              driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
+              url="jdbc:derby:airdb"
+              maxActive="100" maxIdle="30" maxWait="10000"
+              />
+              <!-- url="jdbc:derby:airdb;create=true" -->
+    
 
 </Context>
