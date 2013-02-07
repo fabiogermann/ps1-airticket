@@ -130,7 +130,7 @@
       driverName="org.apache.derby.jdbc.ClientDriver"
    connectionURL="jdbc:derby://localhost:1527/airdb;user=dbuser;password=dbuser"
        userTable="Benutzer" userNameCol="email" userCredCol="passwort"
-   userRoleTable="Rolle" roleNameCol="rollen"/>
+   userRoleTable="Rolle" roleNameCol="rollen" digest="MD5" />
         
         
         

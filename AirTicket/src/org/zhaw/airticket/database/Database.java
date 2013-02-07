@@ -1,5 +1,9 @@
 package org.zhaw.airticket.database;
 
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,7 +66,7 @@ public class Database {
 
 	}
 
-	public boolean addBenutzer(Benutzer benutzer) {
+	public boolean addBenutzer(Benutzer benutzer) throws SQLException {
 		try {
 			insertBenutzer.setString(1, benutzer.getEmail());
 			insertBenutzer.setString(2, benutzer.getPasswort());
@@ -70,15 +74,14 @@ public class Database {
 			insertBenutzer.setString(4, benutzer.getName());
 			insertBenutzer.setString(5, benutzer.getStrasse());
 			insertBenutzer.setString(6, benutzer.getOrt());
-			insertBenutzer.setInt(7, benutzer.getPostleitzahl());
-			insertBenutzer.setLong(8, benutzer.getTelefonnummer());
+			insertBenutzer.setInt(7, benutzer.getPostleitzahlInt());
+			insertBenutzer.setLong(8, benutzer.getTelefonnummerLong());
 			insertBenutzer.setString(9, benutzer.getLand());
 
 			insertRollen.setString(1, benutzer.getEmail());
 
 			insertBenutzer.executeUpdate();
 			insertRollen.executeUpdate();
-
 			conn.commit();
 
 		} catch (SQLException e) {
@@ -86,21 +89,25 @@ public class Database {
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				e.printStackTrace();
 			}
+			throw e;
 		}
 
 		return true;
 	}
 
 	public Benutzer getBenutzer(String email) {
+		if (email == null) {
+			return null;
+		}
 		Benutzer benutzer = null;
 		try {
 
 			selectBenutzer.setString(1, email);
 			ResultSet benutzerRs = selectBenutzer.executeQuery();
 			if (benutzerRs.next()) {
-				benutzer = new Benutzer(benutzerRs.getString("email"), benutzerRs.getString("vorname"), benutzerRs.getString("name"), benutzerRs.getString("strasse"), benutzerRs.getString("ort"), benutzerRs.getInt("postleitzahl"), benutzerRs.getLong("telefonnummer"), benutzerRs.getString("land"));
+				benutzer = new Benutzer(benutzerRs.getString("email"), benutzerRs.getString("vorname"), benutzerRs.getString("name"), benutzerRs.getString("strasse"), benutzerRs.getString("ort"), benutzerRs.getString("postleitzahl"), benutzerRs.getString("telefonnummer"), benutzerRs.getString("land"));
 			} else {
 				System.out.println("Database: Benutzer NICHT gefunden. email = " + email);
 			}
@@ -111,7 +118,7 @@ public class Database {
 
 		Map<Integer, Ticket> tickets = getTickets(email);
 		benutzer.setTickets(tickets);
-		
+
 		return benutzer;
 	}
 
@@ -197,5 +204,4 @@ public class Database {
 		}
 		return flugzeug;
 	}
-
 }

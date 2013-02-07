@@ -15,19 +15,19 @@
 					Sie sind nun Angemeldet.
 					<br />
 					<br />
-					<a href="benutzer_konto.html" alt="Mein Konto">Zu meinem Konto</a>
+					<a href="<%=request.getContextPath()%>/benutzer_konto/konto.jsp">Zu meinem Konto</a>
 					<br />
 					<br />
-					<a href="index.html" alt="Flug finden">Einen Flug finden</a>
+					<a href="<%=request.getContextPath()%>/flug/finden.jsp">Einen Flug finden</a>
 				</p>
 					
 			</article>
 			
-			<%@include file="../include/nav.jsp"%>
+			<%@include file="/include/nav.jsp"%>
 
 		</section>
 
-		<%@include file="../include/footer.jsp"%>
+		<%@include file="/include/footer.jsp"%>
 
 	</div>
 </body>

@@ -1,10 +1,10 @@
-<%@ page import="java.util.* ,org.zhaw.airticket.model.*" %>
+<%@ page import="java.util.* ,org.zhaw.airticket.model.*,org.zhaw.airticket.util.*" %>
 <header>
 
 	<head>
 		<meta charset="UTF-8" />
 		<title>Air Ticket | <%=title %></title>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 	</head>
 	<!-- IF DEBUG = TRUE  -->
 	<p style="color: blue; background-color: white; overflow: scroll;">
@@ -32,10 +32,10 @@
 	<% } %>
 	</p>
 	
-	<h1>AirTicket</h1>
+	<h1>AirTicket</a></h1>
 	<div id="login">
 	<% if(request.getUserPrincipal() == null) { %>
-		<form method="POST" action="../benutzer_konto/angemeldet.jsp">
+		<form method="POST" action="<%=request.getContextPath()%>/benutzer_konto/angemeldet.jsp">
 			<fieldset>
 				<label for="email">E-Mail</label>
 				<input type="email" id="email" name="j_username" required="required" />
@@ -45,7 +45,16 @@
 			</fieldset>
 		</form>
 	<% } else { %>
-		<a href="../benutzer_konto/konto.jsp"><%=request.getUserPrincipal().getName() %></a>
+		<a href="<%=request.getContextPath()%>/benutzer_konto/konto.jsp"><%=request.getUserPrincipal().getName() %></a>
 	<% } %>
 	</div>
+	
+	<% 
+		Errors errors = new Errors();
+		Object errorsObj = request.getAttribute("errors"); 
+	    if (errorsObj != null && errorsObj instanceof Errors){
+	    	errors = (Errors) errorsObj;
+	    }
+	%>
+	
 </header>

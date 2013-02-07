@@ -11,12 +11,16 @@ public class Benutzer {
 	private String name = "";
 	private String strasse = "";
 	private String ort = "";
-	private int postleitzahl = 0;
-	private long telefonnummer = 0;
+	private String postleitzahl = "";
+	private String telefonnummer = "";
 	private String land = "";
 	private Map<Integer, Ticket> tickets = new HashMap<Integer, Ticket>();
+	
+	public Benutzer() {
+		
+	}
 
-	public Benutzer(String email, String passwort, String vorname, String name, String strasse, String ort, int postleitzahl, long telefonnummer, String land) {
+	public Benutzer(String email, String passwort, String vorname, String name, String strasse, String ort, String postleitzahl, String telefonnummer, String land) {
 		super();
 		this.email = email;
 		this.passwort = passwort;
@@ -28,8 +32,8 @@ public class Benutzer {
 		this.telefonnummer = telefonnummer;
 		this.land = land;
 	}
-
-	public Benutzer(String email, String vorname, String name, String strasse, String ort, int postleitzahl, long telefonnummer, String land) {
+	
+	public Benutzer(String email, String vorname, String name, String strasse, String ort, String postleitzahl, String telefonnummer, String land) {
 		super();
 		this.email = email;
 		this.passwort = "";
@@ -51,7 +55,6 @@ public class Benutzer {
 	}
 
 	public String getPasswort() {
-		// TODO HASH;
 		return passwort;
 	}
 
@@ -90,21 +93,30 @@ public class Benutzer {
 	public void setOrt(String ort) {
 		this.ort = ort;
 	}
-
-	public int getPostleitzahl() {
+	
+	public String getPostleitzahl() {
 		return postleitzahl;
 	}
 
-	public void setPostleitzahl(int postleitzahl) {
+	public void setPostleitzahl(String postleitzahl) {
 		this.postleitzahl = postleitzahl;
 	}
 
-	public long getTelefonnummer() {
+	public String getTelefonnummer() {
 		return telefonnummer;
 	}
 
-	public void setTelefonnummer(long telefonnummer) {
+	public void setTelefonnummer(String telefonnummer) {
 		this.telefonnummer = telefonnummer;
+	}
+
+	
+	public int getPostleitzahlInt() {
+		return Integer.parseInt(postleitzahl);
+	}
+	
+	public long getTelefonnummerLong() {
+		return Long.parseLong(telefonnummer);
 	}
 
 	public String getLand() {
@@ -136,4 +148,5 @@ public class Benutzer {
 		return "Benutzer: " + email + " " + vorname + " " + name + " " + strasse + " " + ort + " " + postleitzahl + " " + telefonnummer + " " + land;
 	}
 
+	
 }

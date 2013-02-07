@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.zhaw.airticket.util.Crypto;
+
 @WebServlet("/initdb")
 public class InitTestDB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -77,16 +79,16 @@ public class InitTestDB extends HttpServlet {
 		} catch (SQLException e) {
 			// System.out.println(e.getMessage());
 		}
-
+		
 		try {
-			stmt.executeUpdate("DROP TABLE Benutzer");
+			stmt.executeUpdate("DROP TABLE Rolle");
 			conn.commit();
 		} catch (SQLException e) {
 			// System.out.println(e.getMessage());
 		}
 
 		try {
-			stmt.executeUpdate("DROP TABLE Rolle");
+			stmt.executeUpdate("DROP TABLE Benutzer");
 			conn.commit();
 		} catch (SQLException e) {
 			// System.out.println(e.getMessage());
@@ -114,8 +116,12 @@ public class InitTestDB extends HttpServlet {
 		}
 
 		System.out.println("INITDB Benutzer");
+		
+
+
+		
 		try {
-			stmt.executeUpdate("CREATE TABLE Benutzer (email VARCHAR(50) NOT NULL, passwort VARCHAR(50) NOT NULL, vorname VARCHAR(50) NOT NULL, name VARCHAR(50) NOT NULL, strasse VARCHAR(50) NOT NULL, ort VARCHAR(50) NOT NULL, postleitzahl INTEGER NOT NULL, telefonnummer BIGINT NOT NULL ,land VARCHAR(50) NOT NULL,PRIMARY KEY(email))");
+			stmt.executeUpdate("CREATE TABLE Benutzer (email VARCHAR(50) NOT NULL, passwort VARCHAR(32) NOT NULL, vorname VARCHAR(50) NOT NULL, name VARCHAR(50) NOT NULL, strasse VARCHAR(50) NOT NULL, ort VARCHAR(50) NOT NULL, postleitzahl INTEGER NOT NULL, telefonnummer BIGINT NOT NULL ,land VARCHAR(50) NOT NULL,PRIMARY KEY(email))");
 			conn.commit();
 			stmt.executeUpdate("CREATE TABLE Rolle (email VARCHAR(50) NOT NULL, Rollen  VARCHAR(50) NOT NULL, PRIMARY KEY (email), FOREIGN KEY(email) REFERENCES Benutzer  )");
 			conn.commit();
@@ -124,12 +130,12 @@ public class InitTestDB extends HttpServlet {
 		}
 
 		try {
-			stmt.executeUpdate("INSERT INTO Benutzer (email, passwort, vorname, name, strasse, ort, postleitzahl, telefonnummer, land) VALUES ('root@air.com','root@air.com','Vorname','Name','Strasse','Ort',0,0,'Land')");
+			stmt.executeUpdate("INSERT INTO Benutzer (email, passwort, vorname, name, strasse, ort, postleitzahl, telefonnummer, land) VALUES ('root@air.com', '"+ Crypto.hashMD5("root@air.com") +"', 'Vorname','Name','Strasse','Ort',0,0,'Land')");
 			conn.commit();
 			stmt.executeUpdate("INSERT INTO Rolle (email, Rollen) VALUES ('root@air.com','manager-gui')");
 			conn.commit();
 
-			stmt.executeUpdate("INSERT INTO  Benutzer (email, passwort, vorname, name, strasse, ort, postleitzahl, telefonnummer, land) VALUES ('user@air.com','user@air.com','UserVorname','UserName','UserStrasse','UserOrt', 8000, 052261000000,'UserLand')");
+			stmt.executeUpdate("INSERT INTO  Benutzer (email, passwort, vorname, name, strasse, ort, postleitzahl, telefonnummer, land) VALUES ('user@air.com', '"+ Crypto.hashMD5("user@air.com") +"' ,'UserVorname','UserName','UserStrasse','UserOrt', 8000, 052261000000,'UserLand')");
 			conn.commit();
 			stmt.executeUpdate("INSERT INTO  Rolle (email, Rollen) VALUES ('user@air.com','user')");
 			conn.commit();
