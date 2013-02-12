@@ -56,7 +56,7 @@
 								</form>	
 							</td>
 							<td>
-								<form action="<%=request.getContextPath()%>/konto" method="get">
+								<form action="<%=request.getContextPath()%>/stornieren" method="post">
 									<input type="submit" id="stornieren_<%=ticket.getId() %>" name="stornieren" value="Stornieren" class="button" />
 									<input type="hidden" name="ticketId" value="<%=ticket.getId() %>" />
 									<input type="hidden" name="flugId" value="<%=ticket.getFlug() %>" />

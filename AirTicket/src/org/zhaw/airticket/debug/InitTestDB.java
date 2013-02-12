@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.apache.catalina.Session;
 import org.zhaw.airticket.util.Crypto;
 
 @WebServlet("/initdb")
@@ -54,6 +55,8 @@ public class InitTestDB extends HttpServlet {
 		// while ((line = reader.readLine()) != null){
 		// sql += line;
 		// }
+		
+		request.getSession().invalidate();
 
 		System.out.println("INITDB START");
 

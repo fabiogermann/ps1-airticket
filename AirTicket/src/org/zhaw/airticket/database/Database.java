@@ -33,6 +33,7 @@ public class Database {
 	private PreparedStatement selectFlug;
 	private PreparedStatement selectFlughafen;
 	private PreparedStatement selectFlugzeug;
+	private PreparedStatement deleteBenutzer;
 
 	public Database() {
 		try {
@@ -58,6 +59,8 @@ public class Database {
 
 			selectFlugzeug = conn.prepareStatement("" + "SELECT modell " + "FROM Flugzeug " + "WHERE modell = ? ");
 
+			deleteBenutzer = conn.prepareStatement("DELETE FROM Ticket WHERE id = ?");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NamingException e) {
@@ -95,6 +98,11 @@ public class Database {
 		}
 
 		return true;
+	}
+	
+	public boolean removeTicket(int ticketId) throws SQLException{
+		deleteBenutzer.setInt(1, ticketId);
+		return deleteBenutzer.execute();
 	}
 
 	public Benutzer getBenutzer(String email) {

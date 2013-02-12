@@ -134,6 +134,10 @@ public class Benutzer {
 	public Ticket getTicketById(int id) {
 		return tickets.get(id);
 	}
+	
+	public Ticket removeTicket(int key) {
+		return tickets.remove(key);
+	}
 
 	public Map<Integer, Ticket> getTickets() {
 		return tickets;

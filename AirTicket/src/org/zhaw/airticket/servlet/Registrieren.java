@@ -81,7 +81,7 @@ public class Registrieren extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/benutzer/registrieren.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/benutzer/registrieren.jsp");
 	}
 
 }
