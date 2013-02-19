@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Errors {
 	
-	public static int TYPE_EMAIL = 0;
+	public static int TYPE_EMAIL = 1;
 	public static int TYPE_NUMBER = 0;
 	
 	private static Map<Integer, String> msgs = new HashMap<Integer, String>();

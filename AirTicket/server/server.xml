@@ -126,11 +126,7 @@
    connectionURL="jdbc:derby:airdb"
  -->
 
-<Realm className="org.apache.catalina.realm.JDBCRealm"
-      driverName="org.apache.derby.jdbc.ClientDriver"
-   connectionURL="jdbc:derby://localhost:1527/airdb;user=dbuser;password=dbuser"
-       userTable="Benutzer" userNameCol="email" userCredCol="passwort"
-   userRoleTable="Rolle" roleNameCol="rollen" digest="MD5" />
+<Realm className="org.apache.catalina.realm.JDBCRealm" connectionURL="jdbc:derby://localhost:1527/airdb;user=dbuser;password=dbuser" digest="MD5" driverName="org.apache.derby.jdbc.ClientDriver" roleNameCol="rollen" userCredCol="passwort" userNameCol="email" userRoleTable="Rolle" userTable="Benutzer"/>
         
         
         
