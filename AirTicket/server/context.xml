@@ -30,26 +30,17 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
-    <!-- 
-              driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
-              url="jdbc:derby:airdb"
-              
-              driverClassName="org.apache.derby.jdbc.ClientDriver"
-        	  url="jdbc:derby://localhost:1527/airdb"
-              
-              
-     -->
+
     <Resource name="jdbc/airdb"
     		  auth="Container"
               type="javax.sql.DataSource"  
               description="DB for AirTicket"
-              username="dbuser" 
-              password="dbuser" 
-              driverClassName="org.apache.derby.jdbc.EmbeddedDriver"
-              url="jdbc:derby:airdb"
+              username="root" 
+              password="root" 
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/airdb"
               maxActive="100" maxIdle="30" maxWait="10000"
               />
-              <!-- url="jdbc:derby:airdb;create=true" -->
-    
+         
 
 </Context>

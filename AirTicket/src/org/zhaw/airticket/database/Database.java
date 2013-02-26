@@ -1,9 +1,5 @@
 package org.zhaw.airticket.database;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,14 +74,13 @@ public class Database {
 			insertBenutzer.setString(5, benutzer.getStrasse());
 			insertBenutzer.setString(6, benutzer.getOrt());
 			insertBenutzer.setInt(7, benutzer.getPostleitzahlInt());
-			insertBenutzer.setLong(8, benutzer.getTelefonnummerLong());
+			insertBenutzer.setString(8, benutzer.getTelefonnummer());
 			insertBenutzer.setString(9, benutzer.getLand());
 
 			insertRollen.setString(1, benutzer.getEmail());
 
 			insertBenutzer.executeUpdate();
 			insertRollen.executeUpdate();
-			conn.commit();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

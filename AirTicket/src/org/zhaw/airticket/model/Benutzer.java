@@ -115,10 +115,6 @@ public class Benutzer {
 		return Integer.parseInt(postleitzahl);
 	}
 	
-	public long getTelefonnummerLong() {
-		return Long.parseLong(telefonnummer);
-	}
-
 	public String getLand() {
 		return land;
 	}

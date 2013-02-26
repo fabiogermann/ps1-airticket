@@ -3,7 +3,6 @@ package org.zhaw.airticket.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,9 +50,10 @@ public class Registrieren extends HttpServlet {
 			errors.putMsg("postleitzahl", Errors.TYPE_NUMBER);
 		}
 
-		if (LongValidator.getInstance().validate(telefonnummer) == null) {
-			errors.putMsg("telefonnummer", Errors.TYPE_NUMBER);
-		}
+		//TODO .match
+//		if (LongValidator.getInstance().validate(telefonnummer) == null) {
+//			errors.putMsg("telefonnummer", Errors.TYPE_NUMBER);
+//		}
 		
 		if (errors.isEmpty()){
 			view = "/benutzer_konto/registriert.jsp";
