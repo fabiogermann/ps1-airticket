@@ -35,12 +35,12 @@
     		  auth="Container"
               type="javax.sql.DataSource"  
               description="DB for AirTicket"
-              username="root" 
-              password="root" 
+              username="airdb"
+              password="airdb" 
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/airdb"
               maxActive="100" maxIdle="30" maxWait="10000"
-              />
+    />
          
 
 </Context>

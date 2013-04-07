@@ -61,7 +61,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="UTF-8" />
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -108,31 +108,29 @@
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
-       <!--@Mo <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/> -->
+        <!--@Mo <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/> -->
         
-        	
-<!-- org.apache.derby.jdbc.ClientDriver -->
+		<!--
+		<Realm className="org.apache.catalina.realm.DataSourceRealm"
+		   dataSourceName="java:comp/env/jdbc/airdb"
+		   userTable="benutzer" 
+		   userNameCol="email" 
+		   userCredCol="passwort"
+		   userRoleTable="rolle" 
+		   roleNameCol="rollen"
+		 />
+		 -->
 
-	
-	
-<!--
-<Realm className="org.apache.catalina.realm.DataSourceRealm"
-   dataSourceName="java:comp/env/jdbc/airdb"
-   userTable="Benutzer" userNameCol="email" userCredCol="passwort"
-   userRoleTable="Rolle" roleNameCol="rollen"/>
-  -->
-<!-- org.gjt.mm.mysql.Driver com.mysql.jdbc.Driver -->
-<Realm
-className="org.apache.catalina.realm.JDBCRealm" 
-connectionURL="jdbc:mysql://localhost:3306/airdb?user=root&amp;password=root" 
-digest="MD5" 
-driverName="org.gjt.mm.mysql.Driver" 
-roleNameCol="rollen" 
-userCredCol="passwort" 
-userNameCol="email" 
-userRoleTable="Rolle" 
-userTable="Benutzer"/>
-</Realm>
+		<Realm className="org.apache.catalina.realm.JDBCRealm" 
+			connectionURL="jdbc:mysql://localhost:3306/airdb?user=airdb&amp;password=airdb" 
+			digest="MD5" 
+			driverName="org.gjt.mm.mysql.Driver" 
+			roleNameCol="rollen" 
+			userCredCol="passwort" 
+			userNameCol="email" 
+			userRoleTable="rolle" 
+			userTable="benutzer"/>
+		</Realm>
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
 
@@ -147,7 +145,10 @@ userTable="Benutzer"/>
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="airticket" path="/airticket" reloadable="true" source="org.eclipse.jst.jee.server:airticket"/></Host>
+      	<Context docBase="airticket" path="/airticket" reloadable="true" source="org.eclipse.jst.jee.server:airticket">
+      	        <Valve className="org.apache.catalina.authenticator.FormAuthenticator" characterEncoding="UTF-8"/>
+      	</Context>
+      </Host>
     </Engine>
   </Service>
 </Server>

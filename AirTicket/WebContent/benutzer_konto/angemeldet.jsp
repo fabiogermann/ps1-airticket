@@ -11,14 +11,11 @@
 
 			<article>
 				<h1><%=title %></h1>
-				<p>
-					Sie sind nun Angemeldet.
+				<p class="meldung">Sie sind nun angemeldet.</p>
+				<p>	<a href="<%=request.getContextPath()%>/benutzer_konto/konto.jsp">> Zu meinem Konto</a>
 					<br />
 					<br />
-					<a href="<%=request.getContextPath()%>/benutzer_konto/konto.jsp">Zu meinem Konto</a>
-					<br />
-					<br />
-					<a href="<%=request.getContextPath()%>/flug/finden.jsp">Einen Flug finden</a>
+					<a href="<%=request.getContextPath()%>/flug/finden.jsp">> Einen Flug finden</a>
 				</p>
 					
 			</article>

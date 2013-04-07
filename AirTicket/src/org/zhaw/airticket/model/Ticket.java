@@ -14,10 +14,10 @@ public class Ticket {
 	private static final String[] alpha = { " ", "A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q" };
 	public static final String datePattern = "dd.MM.yyyy";
 
-	public Ticket(int id, Date abflugsdatum, int sitzreihe, int sitzspalte, String klasse, Flug flug) {
+	public Ticket(int id, Date abflugdatum, int sitzreihe, int sitzspalte, String klasse, Flug flug) {
 		super();
 		this.id = id;
-		this.abflugdatum = abflugsdatum;
+		this.abflugdatum = abflugdatum;
 		this.sitzreihe = sitzreihe;
 		this.sitzspalte = sitzspalte;
 		this.klasse = klasse;

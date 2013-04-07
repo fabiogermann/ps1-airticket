@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.validator.routines.EmailValidator;
 import org.apache.commons.validator.routines.IntegerValidator;
-import org.apache.commons.validator.routines.LongValidator;
 import org.zhaw.airticket.database.Database;
 import org.zhaw.airticket.model.Benutzer;
 import org.zhaw.airticket.util.Crypto;
@@ -49,6 +48,12 @@ public class Registrieren extends HttpServlet {
 		if (IntegerValidator.getInstance().validate(postleitzahl) == null) {
 			errors.putMsg("postleitzahl", Errors.TYPE_NUMBER);
 		}
+		
+		if (telefonnummer != null && !telefonnummer.matches("[+ 0-9]*")){
+			errors.putMsg("telefonnummer", Errors.TYPE_PHONENUMBER);
+		}
+		
+		
 
 		//TODO .match
 //		if (LongValidator.getInstance().validate(telefonnummer) == null) {
@@ -56,14 +61,13 @@ public class Registrieren extends HttpServlet {
 //		}
 		
 		if (errors.isEmpty()){
-			view = "/benutzer_konto/registriert.jsp";
 			Benutzer benutzer = new Benutzer(email, Crypto.hashMD5(passwort), vorname, name, strasse, ort, postleitzahl, telefonnummer, land);
 			System.out.println(email + " " + passwort + " " + vorname + " " + name + " " + strasse + " " + ort + " " + postleitzahl + " " + telefonnummer + " " + land);
 			
 			try {
 				db.addBenutzer(benutzer);
 			} catch (SQLException e) {
-				if (e.getMessage().contains("duplicate key")){
+				if (e.getMessage().contains("Duplicate")){
 					errors.putMsg("general", "Benutzer bereits vorhanden");
 				} else {
 					//TODO
@@ -75,8 +79,20 @@ public class Registrieren extends HttpServlet {
 		if (!errors.isEmpty()){
 			view = "/benutzer/registrieren.jsp";
 			request.setAttribute("errors", errors);
+			getServletContext().getRequestDispatcher(view).forward(request, response);
+		} else {
+			if (request.getSession().getAttribute("login-forward-uri") == null){
+				view = "/benutzer_konto/registriert.jsp";
+				getServletContext().getRequestDispatcher(view).forward(request, response);
+			} else {
+				String targetURI = (String)request.getSession().getAttribute("login-forward-uri");
+				request.getSession().removeAttribute("login-forward-uri");
+				response.sendRedirect(targetURI);
+			}
+			
 		}
-		getServletContext().getRequestDispatcher(view).forward(request, response);
+		
+		
 	}
 
 	@Override

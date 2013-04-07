@@ -18,10 +18,10 @@
 					Vielen Dank. Sie sind nun registriert.
 					<br />
 					<br />
-					<a href="<%=request.getContextPath()%>/benutzer_konto/konto.jsp" alt="Mein Konto">Zu meinem Konto</a>
+					<a href="<%=request.getContextPath()%>/benutzer_konto/konto.jsp">Zu meinem Konto</a>
 					<br />
 					<br />
-					<a href="<%=request.getContextPath()%>/flug/finden.jsp" alt="Flug finden">Einen Flug finden</a>
+					<a href="<%=request.getContextPath()%>/flug/finden.jsp">Einen Flug finden</a>
 				<p>
 		
 			</article>

@@ -27,6 +27,9 @@ public class AirFilter implements Filter {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws java.io.IOException, ServletException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		//HttpServletResponse res = (HttpServletResponse) response;
@@ -36,6 +39,16 @@ public class AirFilter implements Filter {
 			Principal principal = req.getUserPrincipal();
 			if (principal != null){
 				String email = principal.getName();
+
+				System.out.println("Filter: Benutzer = " + email);
+				
+//				if (principal instanceof GenericPrincipal){
+//					GenericPrincipal genericPrincipal = (GenericPrincipal) principal;
+//					if (genericPrincipal.hasRole("user")){
+//						System.out.println("Filter: Benutzer is in role user");	
+//					}
+//				}
+				
 				if (email != null) {
 					Benutzer benutzer = db.getBenutzer(email);
 					req.getSession().setAttribute("Benutzer", benutzer);

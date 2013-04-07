@@ -1,5 +1,5 @@
 /* ~~~~ Stylesheet für die Webapplikation AirTicket ~~~~ */
-/*           v1.0, letzte Änderung: 07.12.2012           */
+/*           v0.7, letzte Änderung: 30.13.2013           */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
  
 
@@ -80,6 +80,7 @@ section {
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
+	overflow: auto;
 }
 
 article {
@@ -161,6 +162,11 @@ nav ul li a[href="index.html"] {
 }
 
 nav ul li a:hover {
+	background-color: #DCF2FB;
+	color: #4682B4;
+}
+
+nav .active {
 	background-color: #DCF2FB;
 	color: #4682B4;
 }
@@ -342,12 +348,14 @@ article input,article select {
 
 
 /* Article Weitere */
-article.total {
+
+div.total {
 	border-bottom: double 3px #AAAAAA;
 	margin-bottom: 10px;
+	font-weight: bold;
 }
 
-article.total_value {
+span.total_value {
 	float: right;
 	margin-right: 30px;
 }
@@ -363,12 +371,107 @@ div.main_view {
 	float: left;
 }
 
+/* Sitzplatz */
+
+#sitzplan {
+    width: 100%;
+	/*height: 450px;
+	overflow: auto;*/
+	margin-top: 20px;
+	border-left: 2px #333333 solid;
+	border-right: 2px #333333 solid;
+}
+
+span.sitzreihe {
+	display: block;
+	clear: left;
+}
+
+span.sitzreihe a {
+	width: 20px;
+	display: block;
+	padding: 2px;
+	/*margin-left: 3%;
+	margin-right: 3%;*/
+	margin: 2px;
+	border: 1px solid #333333;
+	float: left;
+	text-align: center;
+	font-size: 0.9em;
+	color: #000000;
+}
+
+
+span.sitzreihe a:hover {
+    color: #000000;
+}
+
+span.sitzreihe a.frei {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+span.sitzreihe a.frei:hover {
+    background-color: #98FB98;
+}
+
+span.sitzreihe a.aktiv {
+    background-color: #98FB98;
+}
+
+span.sitzreihe a.reserviert {
+    background-color: #DC143C;
+    color: #DDDDDD;
+}
+
 #sitzplanimg {
 	display: block;
 	width: 400px;
 	height: 250px;
 	clear: both;
 	overflow: auto;
+}
+
+/* Meldungen */
+
+p.error {
+    background-image:url(img/error-icon.png);
+    background-repeat:no-repeat;
+    /*display: block;*/
+    clear: left;
+    font-weight: bold;
+    color: #000000;
+    height: 25px;
+    padding: 5px 5px 0px 30px;
+    margin: 10px 0px 10px 0px;
+}
+
+p.meldung {
+    background-image:url(img/success-icon.png);
+    background-repeat:no-repeat;
+    /*display: block;
+    clear: left;*/
+    font-weight: bold;
+    color: #000000;
+    height: 30px;    
+    padding: 5px 5px 0px 35px;
+    margin: 10px 0px 10px 0px;
+}
+
+p.hinweis {
+    background-image:url(img/info-icon.png);
+    background-repeat:no-repeat;
+    /*display: block;
+    clear: left;*/
+    font-weight: bold;
+    color: #000000;
+    height: 30px;    
+    padding: 5px 5px 0px 30px;
+    margin: 10px 0px 10px 0px;
+}
+
+.errormsg {
+	color: red;
 }
 
 

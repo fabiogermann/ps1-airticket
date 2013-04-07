@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Crypto {
 
-	public  static  final String ALGORITHM = "MD5";
+	public static final String ALGORITHM = "MD5";
 	public static final String ENCODING = "UTF-8";
 	
 	public static String hashMD5(String input) {

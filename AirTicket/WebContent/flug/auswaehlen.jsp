@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+<jsp:useBean id="flugFinden" class="org.zhaw.airticket.model.FlugFinden" scope="session" />
+<jsp:setProperty name="flugFinden" property="*" />
+<%@ page import="org.zhaw.airticket.database.*"%>
+<%@ page import="java.text.*" %>
 
 <%! String title = "Flug auswählen"; %>
 
@@ -14,76 +18,64 @@
 
 			<article>
 				<h1><%=title %></h1>
-				<form action="buchen.jsp" method="post">
+				
+				<% 	ArrayList<Flug> hinfluege = new ArrayList<Flug>();
+				   	ArrayList<Flug> rueckfluege = new ArrayList<Flug>(); 
+				   	Database database = new Database();
+				   	hinfluege = (ArrayList<Flug>) request.getAttribute("hinFlug");
+				   	rueckfluege = (ArrayList<Flug>) request.getAttribute("rueckFlug");
+				%>
+				
+				<form action="<%=request.getContextPath() %>/flug/buchen.jsp" method="post">
 					<div id="hinflug">
 						<h2>Hinflug</h2>
+						
+	                   <% if (hinfluege.size() != 0) { %>
+	 						
 						<table>
+						   <tr>
+                                <th>Flugnummer</th>
+                                <th>Abflugdatum | Zeit</th>
+                                <th>Ankunftsdatum | Zeit</th>
+                                <th>Dauer</th>
+                                <th>Startflughafen</th>
+                                <th>Zielflughafen</th>
+                                <th>Verfügbarkeit</th>
+                                <th>Economy</th>
+                                <th>Business</th>
+                            </tr>
+                            
+						    <% for (Flug flug : hinfluege) { %>						
+
 							<tr>
-								<th>Flugnummer</th>
-								<th>Abflugdatum | Zeit</th>
-								<th>Ankunftsdatum | Zeit</th>
-								<th>Dauer</th>
-								<th>Startflughafen</th>
-								<th>Zielflughafen</th>
-								<th>Verfügbarkeit</th>
-								<th>Economy</th>
-								<th>Business</th>
+								<td><%= flug.getNummer() %></td>
+								<td><%= flug.getGeplant() %> | <%= flug.getAbflugzeit(null) %></td>
+								<td><%= flug.getGeplant() %> | <%= flug.getAnkunftzeit(null) %></td>
+								<td><%= flug.getDauer(null) %></td>
+								<td><%= flug.getVon().getStadt() %></td>
+								<td><%= flug.getNach().getStadt() %></td>
+								<td>Business: <%= database.freiePlaetzeBus(flug.getNummer()) %> <br /> Economy: <%= database.freiePlaetzeEco(flug.getNummer()) %></td>
+								<td><input type="radio" id="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" name="flug_auswaehlen_h" checked="checked" value="<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>"><%= flug.getEconomyPreis() %> CHF</label></td>
+								<td><input type="radio" id="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" name="flug_auswaehlen_h" value="<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>"><%= flug.getBusinessPreis() %> CHF</label></td>
 							</tr>
-							<tr>
-								<td>K2 482</td>
-								<td>27.11.12 | 09:20</td>
-								<td>27.11.12 | 10:35</td>
-								<td>1:15h</td>
-								<td>Zürich</td>
-								<td>London</td>
-								<td>Business: 44 <br /> Economy: 122
-								</td>
-								<td><input type="radio" id="radio_flug_h1_e" name="flug_auswaehlen_h" checked="checked" value="Flug_h1_e" /> <label for="radio_flug_h1_e">250 CHF</label></td>
-								<td><input type="radio" id="radio_flug_h1_b" name="flug_auswaehlen_h" value="Flug_h1_b" /> <label for="radio_flug_h1_b">500 CHF</label></td>
-							</tr>
-							<tr>
-								<td>AB 8589</td>
-								<td>27.11.12 | 10:35</td>
-								<td>27.11.12 | 11:53</td>
-								<td>1.18:h</td>
-								<td>Zürich</td>
-								<td>London</td>
-								<td>Business: 12 <br /> Economy: 196
-								</td>
-								<td><input type="radio" id="radio_flug_h2_e" name="flug_auswaehlen_h" value="Flug_h2_e" /> <label for="radio_flug_h2_e">220 CHF</label></td>
-								<td><input type="radio" id="radio_flug_h2_b" name="flug_auswaehlen_h" value="Flug_h2_b" /> <label for="radio_flug_h2_b">535 CHF</label></td>
-							</tr>
-							<tr>
-								<td>AF 1115</td>
-								<td>27.11.12 | 15:20</td>
-								<td>27.11.12 | 16:35</td>
-								<td>1:15h</td>
-								<td>Zürich</td>
-								<td>London</td>
-								<td>Business: 38 <br /> Economy: 96
-								</td>
-								<td><input type="radio" id="radio_flug_h3_e" name="flug_auswaehlen_h" value="Flug_h3_e" /> <label for="radio_flug_h3_e">285 CHF</label></td>
-								<td><input type="radio" id="radio_flug_h3_b" name="flug_auswaehlen_h" value="Flug_h3_b" /> <label for="radio_flug_h3_b">600 CHF</label></td>
-							</tr>
-							<!-- 
-							<tr>
-								<td>SQ 345</td>
-								<td>27.11.12 | 17:25</td>
-								<td>27.11.11 | 18:35</td>
-								<td>1:10h</td>
-								<td>Zürich</td>
-								<td>London</td>
-								<td>Business: 11 <br/> Economy: 150</td>
-								<td><input type="radio" id="radio_flug_h4_e" name="flug_auswaehlen_h" value="Flug_h4_e" /> <label for="radio_flug_h4_e">244 CHF</label></td>
-								<td><input type="radio" id="radio_flug_h4_b" name="flug_auswaehlen_h" value="Flug_h4_b" /> <label for="radio_flug_h4_b">566 CHF</label>
-								</td>
-							</tr>
-							-->
-						</table>
+							
+					      <% } %>
+						    
+						  </table>
+					        
+			           <%} else { %>
+                        
+                            <p class="error">Es konnten keine Hinflüge gefunden werden. Bitte ändern Sie Ihre Suchkriterien.</p>
+                            
+                    <% } %>
+
 					</div>
 					
 					<div id="rueckflug">
 						<h2>Rückflug</h2>
+						
+						<% if (rueckfluege.size() != 0) { %>
+						
 						<table>
 							<tr>
 								<th>Flugnummer</th>
@@ -96,63 +88,41 @@
 								<th>Economy</th>
 								<th>Business</th>
 							</tr>
-							<tr>
-								<td>K2 498</td>
-								<td>29.11.12 | 10:20</td>
-								<td>29.11.12 | 11:35</td>
-								<td>1:15h</td>
-								<td>London</td>
-								<td>Zürich</td>
-								<td>Business: 22 <br /> Economy: 210
-								</td>
-								<td><input type="radio" id="radio_flug_r1_e" name="flug_auswaehlen_r" value="Flug_r1_e" /> <label for="radio_flug_r1_e">250 CHF</label></td>
-								<td><input type="radio" id="radio_flug_r1_b" name="flug_auswaehlen_r" value="Flug_r1_b" /> <label for="radio_flug_r1_b">545 CHF</label></td>
-							</tr>
-							<tr>
-								<td>AB 41258</td>
-								<td>30.11.12 | 11:35</td>
-								<td>30.11.12 | 12:53</td>
-								<td>1:18h</td>
-								<td>London</td>
-								<td>Zürich</td>
-								<td>Business: 8 <br /> Economy: 120
-								</td>
-								<td><input type="radio" id="radio_flug_r2_e" name="flug_auswaehlen_r" value="Flug_r2_e" /> <label for="radio_flug_r2_e">266 CHF</label></td>
-								<td><input type="radio" id="radio_flug_r2_b" name="flug_auswaehlen_r" checked="checked" value="Flug_r2_b" /> <label for="radio_flug_r2_b">375 CHF</label></td>
-							</tr>
-							<tr>
-								<td>AF 1145</td>
-								<td>30.11.12 | 16:20</td>
-								<td>30.11.12 | 17:35</td>
-								<td>1:15h</td>
-								<td>London</td>
-								<td>Zürich</td>
-								<td>Business: 36 <br /> Economy: 116
-								</td>
-								<td><input type="radio" id="radio_flug_r3_e" name="flug_auswaehlen_r" value="Flug_r3_e" /> <label for="radio_flug_r3_e">227 CHF</label></td>
-								<td><input type="radio" id="radio_flug_r3_b" name="flug_auswaehlen_r" value="Flug_r3_b" /> <label for="radio_flug_r3_b">561 CHF</label></td>
-							</tr>
-							<!-- 
-							<tr>
-								<td>SQ 654</td>
-								<td>01.12.12 | 18:25</td>
-								<td>01.12.12 | 19:35</td>
-								<td>1:15h</td>
-								<td>London</td>
-								<td>Zürich</td>
-								<td>Business: 27 <br/> Economy: 140</td>
-								<td><input type="radio" id="radio_flug_r4_e" name="flug_auswaehlen_r" value="Flug_r4_e" /> <label for="radio_flug_r4_e">199 CHF</label></td>
-								<td><input type="radio" id="radio_flug_r4_b" name="flug_auswaehlen_r" value="Flug_r4_b" /> <label for="radio_flug_r4_b">435 CHF</label></td>
-							</tr>
-							-->
-						</table>
+							
+						    <% for (Flug flug : rueckfluege) {   
+						   
+                            %>
+                            <tr>
+                                <td><%= flug.getNummer() %></td>
+                                <td><%= flug.getGeplant() %> | <%= flug.getAbflugzeit(null) %></td>
+                                <td><%= flug.getGeplant() %> | <%= flug.getAnkunftzeit(null) %></td>
+                                <td><%= flug.getDauer(null) %></td>
+                                <td><%= flug.getVon().getStadt() %></td>
+                                <td><%= flug.getNach().getStadt() %></td>
+                                <td>Business: <%= database.freiePlaetzeBus(flug.getNummer()) %> <br /> Economy: <%= database.freiePlaetzeEco(flug.getNummer()) %></td>
+                                <td><input type="radio" id="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" name="flug_auswaehlen_r" checked="checked" value="<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>"><%= flug.getEconomyPreis() %> CHF</label></td>
+                                <td><input type="radio" id="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" name="flug_auswaehlen_r" value="<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>"><%= flug.getBusinessPreis() %> CHF</label></td>
+                            </tr>
+                            
+                          <% } %>
+                            
+                          </table>
+                            
+                       <%} else { %>
+                        
+                            <p class="error">Es konnten keine Rückflüge gefunden werden. Bitte ändern Sie Ihre Suchkriterien.</p>
+                            
+                    <% } %>
+                            
 					</div>
-
-					<input type="submit" id="submit_auswahl" name="submit_auswahl" value="Auswählen" class="button next" />
+					<% if (hinfluege.size() != 10 && rueckfluege.size() != 10 ) { %>
+                    <p class="hinweis">Es wurden total <%= hinfluege.size() + rueckfluege.size()%> Flüge gefunden.</p>
+                    <input type="submit" id="submit_auswahl" name="submit_auswahl" value="Auswählen" class="button next" />	
+                    <% } %>				
 				</form>
 				
 				<!-- <input type="button" id="back" name="back" value="Zurück" class="button back" onclick="history.back()" /> -->
-				<form action="index.html" method="post">
+				<form action="<%=request.getContextPath() %>/flug/finden.jsp" method="post">
 					<input type="submit" id="back" name="back" value="Zurück" class="button back" />
 				</form>
 
