@@ -23,7 +23,7 @@ public class Errors {
 		msgs.put(TYPE_PHONENUMBER, "Bitte geben sie eine gültige Telefonnummer an.");
 		msgs.put(TYPE_FLUGHAFEN, "Bitte einen der vorhandenen Flughäfen auswählen.");
 		msgs.put(TYPE_DATUM_PAST, "Das ausgewählte Datum liegt in der Vergangenheit.");
-		msgs.put(TYPE_DATUM_MIX, "Das Rückflugdatum muss nach den Hinflugdatum sein.");
+		msgs.put(TYPE_DATUM_MIX, "Das Räckflugdatum muss nach den Hinflugdatum sein.");
 		msgs.put(TYPE_DATUM_SET, "Bitte wählen Sie ihre Flugdaten aus.");
 	}
 	

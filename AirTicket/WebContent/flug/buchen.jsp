@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page import="org.zhaw.airticket.database.*"%>
 <%@ page import="org.zhaw.airticket.model.Flug" %>
-
 <%! String title = "Flug buchen"; %>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">
@@ -16,6 +18,9 @@
 
 			<article>
 				<h1>Ihre Flugauswahl | Detailinformationen</h1>
+				<div class="textblock">
+					In der Übersicht sehen sie ihre gewünschten Flüge.
+				</div>
 				<div id="flugdetails">
 				<% Database database = new Database();
 				//Object hinflug = new Object();
@@ -44,7 +49,7 @@
 							 hinflugKlasse = "Business";
 							 hinflugPreis = hinflug.getBusinessPreis();
 							}
-							Ticket hinflugTicket = new Ticket(0, new Date(), 0, 0, hinflugKlasse, hinflug);
+							Ticket hinflugTicket = new Ticket(0, hinflug.getGeplantDate(null), 0, 0, hinflugKlasse, hinflug);
 							session.setAttribute("hinflugTicket", hinflugTicket);
 							hVon = hinflug.getVon().getStadt();
 							hNach = hinflug.getNach().getStadt();
@@ -63,8 +68,8 @@
 							</tr>
 							<tr>
 	                            <td><%= hinflug.getNummer() %></td>
-	                            <td><%= hinflug.getGeplant() %> | <%= hinflug.getAbflugzeit(null) %></td>
-	                            <td><%= hinflug.getGeplant() %> | <%= hinflug.getAnkunftzeit(null) %></td>
+	                            <td><%= hinflug.getAbflugdatum(null) %> | <%= hinflug.getAbflugzeit(null) %></td>
+	                            <td><%= hinflug.getAnkunftdatum(null) %> | <%= hinflug.getAnkunftzeit(null) %></td>
 	                            <td><%= hinflug.getDauer(null) %>h</td>
 	                            <td><%= hinflug.getVon().getStadt() %></td>
 	                            <td><%= hinflug.getNach().getStadt() %></td>
@@ -87,7 +92,7 @@
 							    rueckflugKlasse = "Business";
 							    rueckflugPreis = rueckflug.getBusinessPreis();
 							}
-							Ticket rueckflugTicket = new Ticket(0, new Date(), 0, 0, rueckflugKlasse, rueckflug);
+							Ticket rueckflugTicket = new Ticket(0, rueckflug.getGeplantDate(null), 0, 0, rueckflugKlasse, rueckflug);
 							session.setAttribute("rueckflugTicket", rueckflugTicket);
 							rVon = rueckflug.getVon().getStadt();
 							rNach = rueckflug.getNach().getStadt();
@@ -106,8 +111,8 @@
 							</tr>
 							<tr>
 							    <td><%= rueckflug.getNummer() %></td>
-	                            <td><%= rueckflug.getGeplant() %> | <%= rueckflug.getAbflugzeit(null) %></td>
-	                            <td><%= rueckflug.getGeplant() %> | <%= rueckflug.getAnkunftzeit(null) %></td>
+	                            <td><%= rueckflug.getAbflugdatum(null) %> | <%= rueckflug.getAbflugzeit(null) %></td>
+	                            <td><%= rueckflug.getAnkunftdatum(null) %> | <%= rueckflug.getAnkunftzeit(null) %></td>
 	                            <td><%= rueckflug.getDauer(null) %>h</td>
 	                            <td><%= rueckflug.getVon().getStadt() %></td>
 	                            <td><%= rueckflug.getNach().getStadt() %></td>

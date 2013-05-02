@@ -2,18 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <jsp:useBean id="flugFinden" class="org.zhaw.airticket.model.FlugFinden" scope="session" />
 <%! String title = "Flug finden"; %>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">
 
 		<%@include file="../include/header.jsp"%>
-		<style>
-			.ui-autocomplete {
-			max-height: 300px;
-			overflow-y: auto;
-			overflow-x: hidden;
-			}
-		</style>
+
 		<script type="text/javascript">
 			<% 
 				Autocomplete auto = new Autocomplete();
@@ -54,12 +49,12 @@
 					<fieldset>
 						<legend>Datum</legend>
 						<label for="date_flight">Hinflug</label>
-						<input type="date" id="date_flight" name="date_flight" placeholder="z.B. 21.12.2012" required="required" value="${flugFinden.date_flight}" />
+						<input type="text" id="date_flight" name="date_flight" placeholder="z.B. 21.12.2012" required="required" value="${flugFinden.date_flight}" />
 						<%if (!errors.getMsg("date_flight").equals("")) {%>
 						<p class="error"><%=errors.getMsg("date_flight") %> </p>
 						<% } %>
 						<label for="date_returnflight">Rückflug</label>
-						<input type="date" id="date_returnflight" name="date_returnflight" placeholder="z.B. 31.12.2012" required="required" value="${flugFinden.date_returnflight}" />
+						<input type="text" id="date_returnflight" name="date_returnflight" placeholder="z.B. 31.12.2012" required="required" value="${flugFinden.date_returnflight}" />
 						<%if (!errors.getMsg("date_returnflight").equals("")) {%>
 						<p class="error"><%=errors.getMsg("date_returnflight") %> </p>
 						<% } %>
@@ -73,8 +68,12 @@
 					</fieldset>
 					<input type="submit" id="submit_search" name="submit_search" value="Suchen" class="button" />
 				</form>
+				<div class="textblock textnote">
+					Sie sind auf der Suche nach einem Flug für ihre geplante Ferienreise? <br/>
+					AirTicket bietet ihnen die Möglichkeit schnell und einfach den passenden Flug zu finden. Sie können anhand des Start- &amp; Zielflughafen nach Flügen im passenden Zeitraum suchen, oder, falls sie schon eine Flugnummer haben direkt mit dieser den Flug finden. (Viel Spass und schöne Ferien?)
+				</div>
 			</article>
-
+			
 			<%@include file="../include/nav.jsp"%>
 
 		</section>

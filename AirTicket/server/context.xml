@@ -30,8 +30,9 @@
     <!--
     <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
     -->
-
+	<!-- https://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#How_to_use -->
     <Resource name="jdbc/airdb"
+    		  factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
     		  auth="Container"
               type="javax.sql.DataSource"  
               description="DB for AirTicket"
@@ -39,8 +40,19 @@
               password="airdb" 
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/airdb"
-              maxActive="100" maxIdle="30" maxWait="10000"
+              maxActive="100" 
+              maxIdle="30" 
+              maxWait="10000"
+              autoReconnect="true"
+	          removeAbandonedTimeout="60"
+	          removeAbandoned="true"
+	          logAbandoned="true"
     />
+     <!--
+     factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+    poolPreparedStatements
+    maxOpenPreparedStatements
+     -->
          
 
 </Context>

@@ -11,7 +11,7 @@ public class Ticket {
 	private int sitzspalte;
 	private String klasse;
 	private Flug flug;
-	private static final String[] alpha = { " ", "A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q" };
+	private static final String[] alpha = { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q" };
 	public static final String datePattern = "dd.MM.yyyy";
 
 	public Ticket(int id, Date abflugdatum, int sitzreihe, int sitzspalte, String klasse, Flug flug) {

@@ -1,5 +1,5 @@
-/* ~~~~ Stylesheet für die Webapplikation AirTicket ~~~~ */
-/*           v0.7, letzte Änderung: 30.13.2013           */
+/* ~~~~ Stylesheet fï¿½r die Webapplikation AirTicket ~~~~ */
+/*           v0.7, letzte ï¿½nderung: 01.05.2013           */
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
  
 
@@ -44,7 +44,7 @@ h1 {
 }
 
 
-/* Hauptblöcke */
+/* Hauptblï¿½cke */
 #seite {
 	width: 900px;
 	margin: 10px auto;
@@ -313,6 +313,24 @@ table tr td input, table tr td label, table tr th input, table tr th label {
 }
 
 
+article .textblock {
+	display: block;
+	padding: 10px;
+	background-color: #FDFDFD;
+	border: 1px solid #AAAAAA;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	font-size: 13px;
+}
+
+article .textnote {
+	position: absolute;
+	top: 54px;
+	right: 0px;
+	width: 300px;
+}
+
 /* Article Form */
 article form {
 	margin: 0;
@@ -374,12 +392,18 @@ div.main_view {
 /* Sitzplatz */
 
 #sitzplan {
-    width: 100%;
 	/*height: 450px;
 	overflow: auto;*/
-	margin-top: 20px;
-	border-left: 2px #333333 solid;
-	border-right: 2px #333333 solid;
+	display: table;
+	margin: 10px auto;
+	padding: 40px 15px 40px 15px;
+	border-left: 1px solid #222222;
+	border-right: 1px solid #222222;
+	border-top-left-radius: 15px 150px;
+	border-top-right-radius: 15px 150px;
+	border-bottom-left-radius: 15px 150px;
+    border-bottom-right-radius: 15px 150px;
+    background-color: #f2fbfc;
 }
 
 span.sitzreihe {
@@ -393,7 +417,7 @@ span.sitzreihe a {
 	padding: 2px;
 	/*margin-left: 3%;
 	margin-right: 3%;*/
-	margin: 2px;
+	margin: 3px 2px 3px 2px;
 	border: 1px solid #333333;
 	float: left;
 	text-align: center;
@@ -401,6 +425,9 @@ span.sitzreihe a {
 	color: #000000;
 }
 
+span.sitzreihe a:nth-of-type(4n+3) {
+	margin-right: 20px; 
+}
 
 span.sitzreihe a:hover {
     color: #000000;
@@ -417,6 +444,10 @@ span.sitzreihe a.frei:hover {
 
 span.sitzreihe a.aktiv {
     background-color: #98FB98;
+}
+
+span.sitzreihe a.inaktiv {
+    background-color: #d3d3d3;
 }
 
 span.sitzreihe a.reserviert {
@@ -488,4 +519,15 @@ footer a {
 
 footer a:hover {
 	color: #FFFFFF;
+}
+
+.valid {
+	text-align: right;
+}
+
+/*Autocomplete*/
+.ui-autocomplete {
+	max-height: 300px;
+	overflow-y: auto;
+	overflow-x: hidden;
 }

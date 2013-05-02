@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <%! String title = "Benutzerkonto";%>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">

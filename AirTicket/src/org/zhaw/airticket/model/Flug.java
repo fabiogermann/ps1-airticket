@@ -1,6 +1,8 @@
 package org.zhaw.airticket.model;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Flug {
@@ -16,6 +18,8 @@ public class Flug {
 	private String geplant;
 	private Flugzeug flugzeug;
 	public static final String timePattern = "HH:mm";
+	public static final String dateConvertPattern = "yyyy-MM-dd";
+	public static final String dateFormatPattern = "dd.MM.yyyy";
 
 	public Flug(String nummer, Flughafen von, Flughafen nach, Date abflugzeit, Date ankunftzeit, Date dauer, int businessPreis, int economyPreis, String geplant, Flugzeug flugzeug) {
 		super();
@@ -116,6 +120,52 @@ public class Flug {
 
 	public void setAnkunftzeit(Date ankunftzeit) {
 		this.ankunftzeit = ankunftzeit;
+	}
+	
+	public Date getGeplantDate(String pattern) {		
+		if (pattern == null || pattern.equals(""))
+			pattern = dateConvertPattern;
+		SimpleDateFormat converter = new SimpleDateFormat(dateConvertPattern);	
+		try {
+			return converter.parse(geplant);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return new Date();
+		}		
+	}
+	
+	public String getAbflugdatum(String pattern) {
+		SimpleDateFormat converter = new SimpleDateFormat(dateConvertPattern);
+		if (pattern == null || pattern.equals(""))
+			pattern = dateFormatPattern;
+		SimpleDateFormat formatter = new SimpleDateFormat(pattern);	
+		try {
+			Date abflugdatum = converter.parse(geplant);
+			return formatter.format(abflugdatum);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return geplant;
+		}		
+	}
+	
+	public String getAnkunftdatum(String pattern) {
+		SimpleDateFormat converter = new SimpleDateFormat(dateConvertPattern);
+		if (pattern == null || pattern.equals(""))
+			pattern = dateFormatPattern;
+		SimpleDateFormat formatter = new SimpleDateFormat(pattern);		
+		try {
+			Date ankunftdatum = converter.parse(geplant);
+			if (abflugzeit.getTime() > ankunftzeit.getTime()) {
+				Calendar c = Calendar.getInstance();
+				c.setTime(ankunftdatum);
+				c.add(Calendar.DATE, 1);
+				ankunftdatum = c.getTime();
+			}			
+			return formatter.format(ankunftdatum);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return geplant;
+		}
 	}
 
 	public String getAbflugzeit(String pattern) {

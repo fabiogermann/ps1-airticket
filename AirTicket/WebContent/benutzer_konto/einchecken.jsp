@@ -6,6 +6,7 @@
 <%! String title = "Sitzplatz auswählen";
     String link = "";
 %>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">
@@ -24,12 +25,6 @@
 					<%
 						if (request.getParameter("ticketId") != null) {
 
-							// #MO ticket.getFlug()
-							//			     Flug flug = database.getFlug(request.getParameter("flugId"));
-							//			     Ticket ticket = database.getTicket(Integer.parseInt(request.getParameter("ticketId")));
-
-							// #MO ale DB ish fixed, aber es isch vill schneller diä info us de session z neh als extra uf db defür
-
 							int ticketId = -1;
 							try {
 								ticketId = Integer.parseInt(request.getParameter("ticketId"));
@@ -44,13 +39,6 @@
 							}
 
 							if (flug != null) {
-
-								//Überprüft, ob Flug dem Flug im Ticket entspricht (damit nöd afach irgend e Flugnr cha id URL gschribe werde)
-								//und ob Ticket vom aktuellen Benutzer ist (damit nöd afach irgend e ID cha id URL gschribe werde)
-								// funzt aber nonig.. vermuetlich bruchts defür e equals methode wo mer schribe mue?
-								//     && benutzer.getTickets().containsValue(ticket)
-
-								// #Mo: gueti ide, aber wennis gad vom benutzer holl lanet != null;
 
 								int reihenr = -1;
 								int sitznr = -1;
@@ -72,7 +60,7 @@
 
 								if (sitzplaetze != null) {
 									Database database = new Database();
-									ArrayList<Ticket> ticketlist = database.getTicketsByFlug(flug.getNummer());
+									ArrayList<Ticket> ticketlist = database.getTicketsByFlug(flug.getNummer(), ticket.getAbflugdatum(), ticket.getKlasse());
 									for (int reihe = 0; reihe < sitzplaetze.length; reihe++) {
 										for (int sitz = 0; sitz < sitzplaetze[reihe].length; sitz++) {
 											for (Ticket t : ticketlist) {
@@ -126,13 +114,18 @@
 					<h2>Sitzplan <%= flug.getFlugzeug().getModell() %></h2>
 					<p>
 						Bitte wählen Sie einen Sitzplatz durch Anklicken aus.
-						<br />
-						<!--
-						<br />
-						Bereits gebucht: <strong>   ticket.getSitzspalteAlpha()   */</strong> 
-						 -->
-						<br />
-						Aktuell ausgewählt: <strong> <%= ticket.getSitzreihe() %><%= ticket.getSitzspalteAlpha() %></strong>
+					</p>
+					<p class="hinweis">
+						<% if (ticket.getSitzreihe() > 0 && ticket.getSitzspalte() > 0) { %>
+							  Bereits gebucht: <strong><%= ticket.getSitzreihe() + ticket.getSitzspalteAlpha()%></strong>&nbsp;
+						<% } else {
+						      if (reihenr < 0 && sitznr < 0) { %>
+                                 Noch kein Sitzplatz ausgewählt.
+                        <%    }
+                           } %> 
+						<% if (reihenr >= 0 && sitznr >= 0) { %> 
+							  Aktuell ausgewählt: <strong><%= sitzplaetze[reihenr][sitznr].getSitznummer() %></strong>
+						<% } %>
 					</p>
 					<!-- <input type="button" id="up" name="up" value="Nach Oben" class="button sitzplanbutton" />-->				
 					
@@ -144,10 +137,16 @@
 						  <span class="sitzreihe">
 						  <% for (int sitz = 0; sitz < sitzplaetze[reihe].length; sitz++) {
 						    	String klasse = "frei";
-						    	String templink = link + "&reihenr=" + reihe + "&sitznr=" + sitz;
+						    	String templink = link + "&amp;reihenr=" + reihe + "&amp;sitznr=" + sitz;
 						    	if (sitzplaetze[reihe][sitz].isReserviert()) {
 						    		klasse = "reserviert";
 						    		templink = link;
+						    		if (reihe == ticket.getSitzreihe() - 1 && sitz == ticket.getSitzspalte() - 1) {
+						    			klasse = "aktiv";
+						    			if (reihenr >= 0 && sitznr >= 0) {
+						    				klasse = "inaktiv";
+						    			}
+						    		}
 						    	}
 						    	if (reihe == reihenr && sitz == sitznr) {
 						    		klasse = "aktiv";

@@ -9,7 +9,7 @@ public class Sitzplatz {
 	private int reihe;
 	private int sitz;
 	private boolean reserviert;
-	private static final String[] alpha = {"A", "B", "C", "D", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q" };
+	private static final String[] alpha = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q" };
 	
 	private PropertyChangeSupport props = new PropertyChangeSupport(this);
 	

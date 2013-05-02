@@ -8,9 +8,9 @@
 
 	try { 
 		 ticketId = Integer.parseInt(request.getParameter("ticketId"));
-		 reihenr = Integer.parseInt(request.getParameter("reihenr"));
-		 sitznr = Integer.parseInt(request.getParameter("sitznr"));
-	} catch (NumberFormatException e){
+		 reihenr = Integer.parseInt(request.getParameter("reihenr")) + 1;
+		 sitznr = Integer.parseInt(request.getParameter("sitznr")) + 1;
+	} catch (NumberFormatException e) {
 		//TODO
 	}
 	
@@ -21,14 +21,12 @@
 		//force refresh
 		session.setAttribute("Benutzer", null);
 		response.sendRedirect(request.getContextPath()+"/benutzer_konto/konto.jsp");
-	%>
-		<!-- forward gaht da nid, chan dr ma erchläre wieso -->
-		<!--  jsp forward page="konto.jsp" jsp forward  -->
 		
-	<%
 	} else {
-	%>
-		NEIN //TODO
-	<%
+	
+		//force refresh
+		session.setAttribute("Benutzer", null);
+		response.sendRedirect(request.getContextPath()+"/benutzer_konto/konto.jsp");
+	
 	}
 	%>

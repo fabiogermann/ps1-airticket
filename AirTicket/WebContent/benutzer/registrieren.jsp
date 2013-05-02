@@ -4,6 +4,7 @@
 <jsp:useBean id="benutzerBean" class="org.zhaw.airticket.model.Benutzer" scope="request" />
 <jsp:setProperty name="benutzerBean" property="*" />
 <%! String title = "Registrieren"; %>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">
@@ -66,7 +67,7 @@
 						<input type="text" id="land" name="land" required="required" value="${benutzerBean.land}" />
 					</fieldset>
 					
-					<p>Falls bereits ein Konto haben können sie sich hier <a href="../benutzer_konto/angemeldet.jsp" alt="Anmelden">anmelden</a>.</p>
+					<p>Falls bereits ein Konto haben können sie sich hier <a href="../benutzer_konto/angemeldet.jsp" >anmelden</a>.</p>
 					<input type="submit" id="submit_register" name="submit_register" value="Registrieren" class="button" />
 				</form>
 		

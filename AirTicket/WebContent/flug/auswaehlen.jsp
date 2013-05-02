@@ -4,8 +4,8 @@
 <jsp:setProperty name="flugFinden" property="*" />
 <%@ page import="org.zhaw.airticket.database.*"%>
 <%@ page import="java.text.*" %>
-
 <%! String title = "Flug auswählen"; %>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">
@@ -18,6 +18,11 @@
 
 			<article>
 				<h1><%=title %></h1>
+				<div class="textblock">
+					Sie haben den passenden Flug für sich gefunden? 
+					 <br/>
+					Wählen Sie ihn durch anklicken aus und sie gelangen auf die Bestätigungsseite.
+				</div>
 				
 				<% 	ArrayList<Flug> hinfluege = new ArrayList<Flug>();
 				   	ArrayList<Flug> rueckfluege = new ArrayList<Flug>(); 
@@ -49,12 +54,12 @@
 
 							<tr>
 								<td><%= flug.getNummer() %></td>
-								<td><%= flug.getGeplant() %> | <%= flug.getAbflugzeit(null) %></td>
-								<td><%= flug.getGeplant() %> | <%= flug.getAnkunftzeit(null) %></td>
+								<td><%= flug.getAbflugdatum(null) %> | <%= flug.getAbflugzeit(null) %></td>
+								<td><%= flug.getAnkunftdatum(null) %> | <%= flug.getAnkunftzeit(null) %></td>
 								<td><%= flug.getDauer(null) %></td>
 								<td><%= flug.getVon().getStadt() %></td>
 								<td><%= flug.getNach().getStadt() %></td>
-								<td>Business: <%= database.freiePlaetzeBus(flug.getNummer()) %> <br /> Economy: <%= database.freiePlaetzeEco(flug.getNummer()) %></td>
+								<td>Business: <%= database.freiePlaetzeBus(flug.getNummer(), flug.getGeplantDate(null)) %> <br /> Economy: <%= database.freiePlaetzeEco(flug.getNummer(), flug.getGeplantDate(null)) %></td>
 								<td><input type="radio" id="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" name="flug_auswaehlen_h" checked="checked" value="<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>"><%= flug.getEconomyPreis() %> CHF</label></td>
 								<td><input type="radio" id="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" name="flug_auswaehlen_h" value="<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>"><%= flug.getBusinessPreis() %> CHF</label></td>
 							</tr>
@@ -94,12 +99,12 @@
                             %>
                             <tr>
                                 <td><%= flug.getNummer() %></td>
-                                <td><%= flug.getGeplant() %> | <%= flug.getAbflugzeit(null) %></td>
-                                <td><%= flug.getGeplant() %> | <%= flug.getAnkunftzeit(null) %></td>
+								<td><%= flug.getAbflugdatum(null) %> | <%= flug.getAbflugzeit(null) %></td>
+								<td><%= flug.getAnkunftdatum(null) %> | <%= flug.getAnkunftzeit(null) %></td>
                                 <td><%= flug.getDauer(null) %></td>
                                 <td><%= flug.getVon().getStadt() %></td>
                                 <td><%= flug.getNach().getStadt() %></td>
-                                <td>Business: <%= database.freiePlaetzeBus(flug.getNummer()) %> <br /> Economy: <%= database.freiePlaetzeEco(flug.getNummer()) %></td>
+                                <td>Business: <%= database.freiePlaetzeBus(flug.getNummer(), flug.getGeplantDate(null)) %> <br /> Economy: <%= database.freiePlaetzeEco(flug.getNummer(), flug.getGeplantDate(null)) %></td>
                                 <td><input type="radio" id="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" name="flug_auswaehlen_r" checked="checked" value="<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_e_<%= flug.getGeplant() %>"><%= flug.getEconomyPreis() %> CHF</label></td>
                                 <td><input type="radio" id="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" name="flug_auswaehlen_r" value="<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>" /> <label for="radio_<%= flug.getNummer() %>_b_<%= flug.getGeplant() %>"><%= flug.getBusinessPreis() %> CHF</label></td>
                             </tr>
@@ -115,7 +120,7 @@
                     <% } %>
                             
 					</div>
-					<% if (hinfluege.size() != 10 && rueckfluege.size() != 10 ) { %>
+					<% if (hinfluege.size() != 0 && rueckfluege.size() != 0 ) { %>
                     <p class="hinweis">Es wurden total <%= hinfluege.size() + rueckfluege.size()%> Flüge gefunden.</p>
                     <input type="submit" id="submit_auswahl" name="submit_auswahl" value="Auswählen" class="button next" />	
                     <% } %>				

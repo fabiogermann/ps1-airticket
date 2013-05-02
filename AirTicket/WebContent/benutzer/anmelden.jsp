@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <%! String title = "Anmelden"; %>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">
@@ -20,6 +21,11 @@
 			
 			<article>
 				<h1><%=title %></h1>
+				<div class="textblock textnote">
+					Als registrierter Benutzer können Sie sich mit ihren Log-in-Daten einloggen.
+					<br />
+					Falls Sie noch kein Benutzerkonto besitzen, können Sie sich innerhalb weniger Minuten kostenlos registrieren.
+				</div>
 				<!-- <form action="../benutzer_konto/angemeldet.jsp" method="post">  -->
 				<form action="j_security_check" method="post">
 					<fieldset>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page import="org.zhaw.airticket.database.*"%>
-
 <%! String title = "Flugbestätigung"; %>
+<%@include file="../include/head.jsp"%>
 
 <body>
 	<div id="seite">
@@ -27,7 +27,7 @@
 						<div id="flugbestaetigung">
 							<h2>Buchungsbestätigung</h2>
 							<p class="meldung">Ihr Flug wurde erfolgreich für sie gebucht. Das Ticket ist ab sofort in ihrem Konto verfügbar.</p>
-							<p><a href="<%=request.getContextPath() %>/benutzer_konto/konto.jsp">> Zu meinem Konto</a>						
+							<p><a href="<%=request.getContextPath() %>/benutzer_konto/konto.jsp">&gt; Zu meinem Konto</a>						
 							   <br />
 							   <br />
 							   Vielen Dank, dass sie AirTicket nutzen.
